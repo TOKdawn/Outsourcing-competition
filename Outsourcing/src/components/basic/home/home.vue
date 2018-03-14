@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-      <BackTop></BackTop>
+    <BackTop></BackTop>
   
     <div id="header">
       <el-row :gutter="20">
@@ -40,46 +40,42 @@
         </el-carousel-item>
       </el-carousel>
   
-  <div>
-    <p>全部合作高校</p>
-    <img src="./school1.png" alt="">
-    <img src="./school2.png" alt="">
-    <img src="./school3.png" alt="">
-    <img src="./school4.png" alt="">
-    <img src="./school5.png" alt="">
-  </div>
+      <div class="home_schoolBar">
+        <p>全部合作高校</p>
+        <img src="./school1.png" alt="">
+        <img src="./school2.png" alt="">
+        <img src="./school3.png" alt="">
+        <img src="./school4.png" alt="">
+        <img src="./school5.png" alt="">
+      </div>
   
-    <!-- </div>
-    <div class="button_bar">
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <div class="button1" @click="fnwork">
-            <Icon type="ios-bookmarks"></Icon>
-            <p class="button_p">{{work}}</p>
-          </div>
-        </el-col>
-        <el-col :span="6">
-          <div class="button2" @click="watchmov">
-            <Icon type="social-youtube"></Icon>
-            <p class="button_p">观看视频</p>
-          </div>
-        </el-col>
-        <el-col :span="6">
-          <div class="button3" @click="fnclas">
-            <Icon type="android-download"></Icon>
-            <p class="button_p">{{clas}}</p>
-          </div>
-        </el-col>
-        <el-col :span="6">
-          <div class="button4">
-            <Icon type="outlet"></Icon>
-            <p class="button_p">敬请期待</p>
-  
-          </div>
-  
-   -->
-  
-        </el-col>  
+      <!-- </div>
+      <div class="button_bar">
+        <el-row :gutter="20">
+          <el-col :span="6">
+            <div class="button1" @click="fnwork">
+              <Icon type="ios-bookmarks"></Icon>
+              <p class="button_p">{{work}}</p>
+            </div>
+          </el-col>
+          <el-col :span="6">
+            <div class="button2" @click="watchmov">
+              <Icon type="social-youtube"></Icon>
+              <p class="button_p">观看视频</p>
+            </div>
+          </el-col>
+          <el-col :span="6">
+            <div class="button3" @click="fnclas">
+              <Icon type="android-download"></Icon>
+              <p class="button_p">{{clas}}</p>
+            </div>
+          </el-col>
+          <el-col :span="6">
+            <div class="button4">
+              <Icon type="outlet"></Icon>
+              <p class="button_p">敬请期待</p>
+            </div> -->
+      </el-col>
       </el-row>
   
     </div>
@@ -92,14 +88,18 @@
       <div class="vidoe_bar">
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./1.jpg" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
+          <div style="padding: 3px;">
+            <span>JAVA零基础提高</span>
             <div class="bottom clearfix">
-  
-              <el-button type="text" class="button">观看视频</el-button>
+              <p style=""><Icon type="person" style="font-size:17px"></Icon>   大连东软信息学院李老师</p>
+            </div>
+            <div class="home_infoBar"> 
+
             </div>
           </div>
         </el-card>
+
+        
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./2.jpg" class="image">
           <div style="padding: 14px;">
@@ -179,7 +179,7 @@
       if (store.state.userdata.role === 20) {
         (this.work = "批改作业"), (this.clas = "发布课件"), (this.userrole = 20);
       }
-
+  
     },
     methods: {
       backhome: function() {
@@ -233,7 +233,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../../../assets/basic.css';
+  @import '../../../assets/basic.css';
   #header {
     height: 100px;
     text-align: center;
@@ -272,7 +272,7 @@
     text-align: center;
     cursor: pointer;
   }
- 
+  
   .el-input-group {
     border-radius: 20px;
   }
@@ -482,4 +482,32 @@
     border-bottom: 20px solid transparent;
     border-left: 30px solid #0e77bb;
   }
+  
+  .home_schoolBar {
+    margin-top: 30px;
+  }
+  
+  .home_schoolBar p {
+    font-size: 23px;
+    font-weight: 600;
+    display: inline-block;
+    line-height: 56px;
+    height: 56px;
+    position: relative;
+    vertical-align: top;
+    margin-right: 30px;
+    color: #1e8def;
+  }
+  
+  .home_schoolBar p:hover {
+    cursor: pointer;
+    color: #1e72ef;
+  }
+  
+  .home_schoolBar img {
+    width: 200px;
+    cursor: pointer;
+  
+  }
+  
 </style>
