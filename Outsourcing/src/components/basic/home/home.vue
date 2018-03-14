@@ -1,0 +1,485 @@
+<template>
+  <div class="home">
+      <BackTop></BackTop>
+  
+    <div id="header">
+      <el-row :gutter="20">
+        <el-col :span="4">
+          <img src="../../login/logo.png" alt="logo" class="header_logo" @click="backhome">
+  
+        </el-col>
+        <el-col :span="16">
+  
+          <div id="search">
+            <el-input placeholder="请输入内容" v-model="searchData" class="input-with-select">
+              <el-button slot="append" icon="el-icon-search" @click="searchmov"></el-button>
+            </el-input>
+          </div>
+        </el-col>
+        <el-col :span="4">
+          <div :class="[userrole ? 'photo' : 'z_none']" @click="logdown">
+            <img :src="imgsrc" alt="portrait" style="width:100%; cursor：pointer;">
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+    <div class="block">
+  
+      <div class="home_buttonBar">
+        <div></div>
+        <div>首页</div>
+        <div>加盟院校</div>
+        <div>加入我们</div>
+        <div>加入企业</div>
+        <div></div>
+      </div>
+  
+      <el-carousel height="400px">
+        <el-carousel-item v-for="item in hour" :key="item.class">
+          <div :class="[item.class,BGbasic]"></div>
+        </el-carousel-item>
+      </el-carousel>
+  
+  <div>
+    <p>全部合作高校</p>
+    <img src="./school1.png" alt="">
+    <img src="./school2.png" alt="">
+    <img src="./school3.png" alt="">
+    <img src="./school4.png" alt="">
+    <img src="./school5.png" alt="">
+  </div>
+  
+    <!-- </div>
+    <div class="button_bar">
+      <el-row :gutter="20">
+        <el-col :span="6">
+          <div class="button1" @click="fnwork">
+            <Icon type="ios-bookmarks"></Icon>
+            <p class="button_p">{{work}}</p>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="button2" @click="watchmov">
+            <Icon type="social-youtube"></Icon>
+            <p class="button_p">观看视频</p>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="button3" @click="fnclas">
+            <Icon type="android-download"></Icon>
+            <p class="button_p">{{clas}}</p>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="button4">
+            <Icon type="outlet"></Icon>
+            <p class="button_p">敬请期待</p>
+  
+          </div>
+  
+   -->
+  
+        </el-col>  
+      </el-row>
+  
+    </div>
+    <div class="wire"></div>
+  
+  
+    <div class="vidoe">
+      <p>
+        <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">热门视频</span></p>
+      <div class="vidoe_bar">
+        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+          <img src="./1.jpg" class="image">
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+  
+              <el-button type="text" class="button">观看视频</el-button>
+            </div>
+          </div>
+        </el-card>
+        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+          <img src="./2.jpg" class="image">
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+  
+              <el-button type="text" class="button">观看视频</el-button>
+            </div>
+          </div>
+        </el-card>
+        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+          <img src="./3.jpg" class="image">
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+  
+              <el-button type="text" class="button">观看视频</el-button>
+            </div>
+          </div>
+        </el-card>
+        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+          <img src="./4.jpg" class="image">
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+  
+              <el-button type="text" class="button">观看视频</el-button>
+            </div>
+          </div>
+        </el-card>
+        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+          <img src="./5.jpg" class="image">
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+  
+              <el-button type="text" class="button">观看视频</el-button>
+            </div>
+          </div>
+        </el-card>
+      </div>
+    </div>
+    <thefooter></thefooter>
+  </div>
+</template>
+
+<script>
+  import store from "../../../vuex/index";
+  import thefooter from "../footer/footer";
+  export default {
+    data() {
+      return {
+        userrole: 0,
+        searchData: "",
+        imgsrc: require("./user.jpg"),
+        userrole: 10,
+        BGbasic: "bgbasic",
+        hour: [{
+            class: "bg1"
+          },
+          {
+            class: "bg2"
+          },
+          {
+            class: "bg3"
+          },
+          {
+            class: "bg4"
+          }
+        ],
+        work: "提交作业",
+        clas: "下载课件"
+      };
+    },
+    created() {
+      this.userrole = store.state.userdata.role;
+      if (store.state.userdata.role === 20) {
+        (this.work = "批改作业"), (this.clas = "发布课件"), (this.userrole = 20);
+      }
+
+    },
+    methods: {
+      backhome: function() {
+        this.$router.push("/");
+      },
+      searchmov: function() {
+        console.log("scsc", this.searchData);
+        this.$router.push({
+          name: "score",
+          params: {
+            scorename: this.searchData
+          }
+        });
+      },
+      logdown: function() {
+        this.$router.push("/");
+      },
+      fnwork: function() {
+        switch (this.userrole) {
+          case 20:
+            this.$router.push("/basic/upwork");
+            break;
+          case 10:
+            this.$router.push("/basic/downwork");
+            break;
+        }
+      },
+      fnclas: function() {
+        switch (this.userrole) {
+          case 20:
+            this.$router.push("/basic/upclass");
+            break;
+          case 10:
+            this.$router.push("/basic/downclass");
+            break;
+        }
+      },
+      watchmov: function() {
+        this.$router.push({
+          name: "score",
+          params: {
+            scorename: "$allmov"
+          }
+        });
+      }
+    },
+    components: {
+      thefooter
+    }
+  };
+</script>
+
+<style lang="scss" scoped>
+@import '../../../assets/basic.css';
+  #header {
+    height: 100px;
+    text-align: center;
+    min-width: 800px;
+  }
+  
+  #search {
+    max-width: 500px;
+    left: 0;
+    right: 0;
+    margin: 30px auto 0px auto;
+    height: 60;
+  }
+  
+  .header_logo {
+    height: 70px;
+    margin-top: 15px;
+    margin-left: 0px;
+  }
+  
+  .photo {
+    display: block;
+    border: 1px solid #fff;
+    border-radius: 300px;
+    width: 80px;
+    height: 80px;
+    margin: 8px auto;
+    position: relative;
+    overflow: hidden;
+    background: #88acdb;
+    -webkit-transition: all 0.2s ease-in;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    text-align: center;
+    cursor: pointer;
+  }
+ 
+  .el-input-group {
+    border-radius: 20px;
+  }
+  
+  $--center-width: 1200px;
+  .bgbasic {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .bg1 {
+    background: url("./1.jpg") 0 0 /100% auto;
+  }
+  
+  .bg2 {
+    background: url("./2.jpg") 0 0/100% auto;
+  }
+  
+  .bg3 {
+    background: url("./3.jpg") 0 0 /100% auto;
+  }
+  
+  .bg4 {
+    background: url("./4.jpg") 0 0/100% auto;
+  }
+  
+  #home {
+    text-align: center;
+    min-width: 800px;
+  }
+  
+  .block {
+    width: $--center-width;
+    left: 0px;
+    right: 0px;
+    margin: 20px auto 20px auto;
+  }
+  
+  .button_bar {
+    width: $--center-width;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  .button1 {
+    cursor: pointer;
+    background-color: #fed05d;
+    text-align: center;
+    color: #fff;
+    font-size: 88px;
+    height: 180px;
+    width: 100%;
+  }
+  
+  .button2 {
+    cursor: pointer;
+    background-color: #8aff7d;
+    text-align: center;
+    color: #fff;
+    font-size: 88px;
+    height: 180px;
+    width: 100%;
+  }
+  
+  .button3 {
+    cursor: pointer;
+    background-color: #83c0ff;
+    text-align: center;
+    color: #fff;
+    font-size: 88px;
+    height: 180px;
+    width: 100%;
+  }
+  
+  .button4 {
+    cursor: pointer;
+    background-color: #fd6266;
+    text-align: center;
+    color: #fff;
+    font-size: 88px;
+    height: 180px;
+    width: 100%;
+  }
+  
+  .button_p {
+    font-size: 25px;
+  }
+  
+  .wire {
+    width: 100%;
+    /* background-color: #8aff7d; */
+    height: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 3px 5px #bfbfbf;
+    margin-bottom: 20px;
+  }
+  
+  .vidoe {
+    width: 100%;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .vidoe>p {
+    font-size: 35px;
+    color: deeppink;
+  }
+  
+  .vidoe_bar {
+    height: 350px;
+    // background-color: #bfbfbf;
+    width: 1400px;
+    left: 0;
+    right: 0;
+    margin: 20px auto 0 auto;
+  }
+  
+  .image {
+    width: 100%;
+  }
+  
+  .vidoe_cord {
+    width: 250px;
+    float: left;
+    margin: 0px 15px;
+  }
+  
+  .vidoe_cord span {
+    font-size: 20px;
+  }
+  
+  .button {
+    font-size: 20px;
+  }
+  
+  .home_buttonBar {
+    margin: 0px 0px 30px 0px;
+  }
+  
+  .home_buttonBar div {
+    float: left;
+    color: #fff;
+    font-size: 23px;
+    line-height: 40px;
+    font-weight: 650;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .home_buttonBar div:hover {
+    color: #eee;
+  }
+  
+  .home_buttonBar:after {
+    clear: both;
+    float: none;
+    content: "";
+    display: block;
+  }
+  
+  .home_buttonBar div:nth-child(1) {
+    height: 0px;
+    width: 0px;
+    width: 0px;
+    height: 0px;
+    border-top: 20px solid #63fbfc;
+    border-right: 20px solid #63fbfc;
+    border-bottom: 20px solid #63fbfc;
+    border-left: 20px solid transparent;
+  }
+  
+  .home_buttonBar div:nth-child(2) {
+    height: 40px;
+    width: 70px;
+    background-color: #63fbfc;
+  }
+  
+  .home_buttonBar div:nth-child(3) {
+    height: 40px;
+    width: 120px;
+    background-color: #3faaf7;
+  }
+  
+  .home_buttonBar div:nth-child(4) {
+    height: 40px;
+    width: 120px;
+    background-color: #138ee0;
+  }
+  
+  .home_buttonBar div:nth-child(5) {
+    height: 40px;
+    width: 110px;
+    background-color: #0e77bb;
+  }
+  
+  .home_buttonBar div:nth-child(6) {
+    height: 0px;
+    width: 0px;
+    width: 0px;
+    height: 0px;
+    border-top: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid #0e77bb;
+  }
+</style>
