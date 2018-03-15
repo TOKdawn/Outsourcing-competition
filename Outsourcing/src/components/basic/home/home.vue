@@ -41,7 +41,7 @@
       </el-carousel>
   
       <div class="home_schoolBar">
-        <p>全部合作高校</p>
+        <p @click="gopath('basic/allschool')">全部合作高校</p>
         <img src="./school1.png" alt="">
         <img src="./school2.png" alt="">
         <img src="./school3.png" alt="">
@@ -86,60 +86,70 @@
       <p>
         <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">热门视频</span></p>
       <div class="vidoe_bar">
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
-          <img src="./1.jpg" class="image">
-          <div style="padding: 3px;">
-            <span>JAVA零基础提高</span>
-            <div class="bottom clearfix">
-              <p style=""><Icon type="person" style="font-size:17px"></Icon>   大连东软信息学院李老师</p>
-            </div>
-            <div class="home_infoBar"> 
-
-            </div>
-          </div>
-        </el-card>
-
-        
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+        <movie :apidate="work"></movie>        
+           <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./2.jpg" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-  
-              <el-button type="text" class="button">观看视频</el-button>
+          <div style="padding: 3px 10px;">
+            <span>JAVA零基础提高</span>
+            <div class="home_teacher">
+              <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>   大连东软信息学院李老师</p>
+            </div>
+            <div class="home_infoBar">
+              <div><Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
+              <div><Icon style="font-size:14px" type="eye"></Icon>23</div> 
+            
+          <div><Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
             </div>
           </div>
         </el-card>
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+
+           <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./3.jpg" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-  
-              <el-button type="text" class="button">观看视频</el-button>
+          <div style="padding: 3px 10px;">
+            <span>JAVA零基础提高</span>
+            <div class="home_teacher">
+              <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>   大连东软信息学院李老师</p>
+            </div>
+            <div class="home_infoBar">
+              <div><Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
+              <div><Icon style="font-size:14px" type="eye"></Icon>23</div> 
+            
+          <div><Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
             </div>
           </div>
         </el-card>
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+   <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./4.jpg" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-  
-              <el-button type="text" class="button">观看视频</el-button>
+          <div style="padding: 3px 10px;">
+            <span>JAVA零基础提高</span>
+            <div class="home_teacher">
+              <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>   大连东软信息学院李老师</p>
+            </div>
+            <div class="home_infoBar">
+              <div><Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
+              <div><Icon style="font-size:14px" type="eye"></Icon>23</div> 
+            
+          <div><Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
             </div>
           </div>
         </el-card>
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
+
+           <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./5.jpg" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-  
-              <el-button type="text" class="button">观看视频</el-button>
+          <div style="padding: 3px 10px;">
+            <span>JAVA零基础提高</span>
+            <div class="home_teacher">
+              <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>   大连东软信息学院李老师</p>
+            </div>
+            <div class="home_infoBar">
+              <div><Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
+              <div><Icon style="font-size:14px" type="eye"></Icon>23</div> 
+            
+          <div><Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
             </div>
           </div>
         </el-card>
+
       </div>
     </div>
     <thefooter></thefooter>
@@ -149,6 +159,7 @@
 <script>
   import store from "../../../vuex/index";
   import thefooter from "../footer/footer";
+  import movie from "../../moiv/moiv.vue"
   export default {
     data() {
       return {
@@ -182,6 +193,10 @@
   
     },
     methods: {
+      gopath: function(thepath){
+        console.log(thepath);
+        this.$router.push(thepath);
+      },
       backhome: function() {
         this.$router.push("/");
       },
@@ -227,7 +242,8 @@
       }
     },
     components: {
-      thefooter
+      thefooter,
+      movie
     }
   };
 </script>
@@ -502,6 +518,7 @@
   .home_schoolBar p:hover {
     cursor: pointer;
     color: #1e72ef;
+    
   }
   
   .home_schoolBar img {
@@ -509,5 +526,52 @@
     cursor: pointer;
   
   }
-  
+  .vidoe_cord span{
+    font-size: 19px;
+    font-weight: 700;
+    text-align: left;
+    color: #333;
+    cursor: pointer;
+
+
+
+  }
+  .vidoe_cord img{
+    cursor: pointer;
+  }
+    .vidoe_cord span:hover{
+   
+    font-weight: 700;
+    text-align: left;
+    color: #000;
+
+  }
+  .vidoe_cord{
+    color: #888;
+    text-align: left;
+    width: 248px;
+   height: 294px;
+  }
+.home_teacher{
+  margin: 8px 0px 0px 0px;
+  font-size: 13px;
+}
+.home_infoBar div{
+  cursor: pointer;
+}
+.home_infoBar div:nth-child(3){
+ float: right;
+}
+.home_infoBar div:nth-child(2){
+ float: left;
+}
+.home_infoBar div:nth-child(1){
+display: inline-block;
+margin-left: 60px;
+}
+
+.home_infoBar{
+  margin-top:30px;
+ 
+}
 </style>

@@ -10,15 +10,14 @@ export default [{
                 // }
         },
         {
-            path: '/basic',
+            path: 'basic',
             component: r => require.ensure([], () => r(require('../components/basic/basic.vue')), 'basic'),
-            redirect: '/basic/home',
             meta: {
                 requireAuth: true
             },
             children: [{
-                path: 'upclass',
-                component: r => require.ensure([], () => r(require('../components/basic/upclass/upclass.vue')), 'upclass')
+                path: 'allschool',
+                component: r => require.ensure([], () => r(require('../components/basic/allschool/allschool.vue')), 'allschool')
             }, {
                 path: 'downwork',
                 component: r => require.ensure([], () => r(require('../components/basic/downwork/downwork')), 'downwork')

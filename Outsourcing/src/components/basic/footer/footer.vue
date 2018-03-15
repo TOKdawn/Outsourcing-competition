@@ -8,7 +8,7 @@
 	</div>
     <div class="footer_info">
     <el-row :gutter="20">
-  <el-col :span="6">
+  <el-col :span="8">
       <p style="margin-bottem: 10px">开发者:</p>
       <a href="https://github.com/TOKdawn"> <img src="./1.jpg" class="autho_img"></a>
       <a href="https://github.com/Mr-WangZhe"> <img src="./5.jpg" class="autho_img"></a>
@@ -17,18 +17,10 @@
       <a href="https://github.com/VerJean"> <img src="./4.jpg" class="autho_img"></a>
       <a href="https://github.com/sansroman"> <img src="./2.jpg" class="autho_img"></a>
   </el-col>
-  <el-col :span="6">
-      设计模式:</br>
-       <Tag closable color="blue">工厂方法模式</Tag>
-    <Tag closable color="green">原型模式</Tag>
-    <Tag closable color="red">观察者模式</Tag>
-    <Tag closable color="yellow">命令模式</Tag>
-    
-    <Tag closable color="red">组合模式</Tag>
-     <Tag closable color="green">享元模式</Tag>
-    <Tag closable color="yellow">模板方法模式</Tag>
+  <el-col :span="8">
+     
   </el-col>
-  <el-col :span="6">
+  <el-col :span="8">
       技术栈:</br>
       <el-tag type="success">Vue</el-tag>
 <el-tag type="info">Express</el-tag>

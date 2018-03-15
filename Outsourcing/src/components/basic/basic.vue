@@ -6,7 +6,7 @@
 
 </template>
 <script>
-import heeader from "./header/header.vue";
+import heeader from "./header/headerdark";
 export default {
   data() {
     return {};

@@ -10,10 +10,11 @@ import axios from 'axios'
 import 'iview/dist/styles/iview.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './vuex/'
+import { backAPI } from './components/utils'
 Vue.config.productionTip = false
     // axios.defaults.baseURL = 'http://rap2api.taobao.org/app/mock/1162/'
 Vue.prototype.$axios = axios
-
+Vue.prototype.$http = backAPI
 Vue.use(Vuex)
 Vue.use(ElementUI)
 Vue.use(iView)

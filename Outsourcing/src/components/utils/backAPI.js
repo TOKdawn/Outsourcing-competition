@@ -1,8 +1,7 @@
-import Vue from 'vue'
 module.exports = {
+
     getText(vue) {
-        return Vue.axios.get(
-            `https://api.github.com/repos/${vue.$store.getters.context}/labels`
-        )
+        return vue.$axios.get('http://fr13nds.xyz:3300/api/number')
     }
+
 }
