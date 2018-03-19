@@ -1,10 +1,10 @@
 <template>
     <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
-          <img src="./2.jpg" class="image">
+          <img src="./2.jpg" class="image"@click="seeMovie">
           <div style="padding: 3px 10px;">
-            <span>{{moiveDate.status}}</span>
+            <span @click="seeMovie">{{moiveDate.status}}</span>
             <div class="home_teacher">
-              <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>  {{moiveData.lenth}} </p>
+              <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>  {{moiveDate.lenth}} </p>
             </div>
             <div class="home_infoBar">
               <div><Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
@@ -24,13 +24,14 @@ export default {
           moiveDate: {
               status: 'dasdas',
               lenth: 23
-          }
+          },
+          
           
       }
   },
   created(){
-      console.log(this.$API)
-     this.moiveDate = this.$http.getText(this);
+    
+    //  this.moiveDate = this.$http.getText(this);
    
   },
   props: {
@@ -39,6 +40,11 @@ export default {
             default: ""
         }
 
+    },
+    methods:{
+      seeMovie: function(){
+         this.$router.push({ name: "showmov", params: { id: _id } });
+      }
     }
 }
 </script>
@@ -61,6 +67,7 @@ export default {
   }
   .vidoe_cord img{
     cursor: pointer;
+    width: 100%;
   }
     .vidoe_cord span:hover{
    

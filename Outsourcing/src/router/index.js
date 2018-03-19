@@ -38,6 +38,10 @@ export default [{
                 name: 'showmov',
                 component: r => require.ensure([], () => r(require('../components/basic/mov/showmov.vue')), 'showmov')
 
+            }, {
+                path: 'login/:schoolId',
+                name: 'login',
+                component: r => require.ensure([], () => r(require('../components/basic/school/school.vue')), 'login')
             }]
 
         },
