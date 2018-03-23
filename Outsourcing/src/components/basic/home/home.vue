@@ -87,7 +87,7 @@
       <p>
         <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">热门视频</span></p>
       <div class="vidoe_bar">
-        <movie :apidate="work"></movie>
+        <movie :apidate="require('./1.jpg')"></movie>
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./2.jpg" class="image">
           <div style="padding: 3px 10px;">
@@ -175,6 +175,7 @@
       <div class="vidoe">
       <p>
         <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">推荐视频</span></p>
+
       <div class="vidoe_bar">
         
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
@@ -360,6 +361,7 @@
 
 <style lang="scss" scoped>
   @import "../../../assets/basic.css";
+ 
   #header {
     height: 100px;
     text-align: center;

@@ -1,6 +1,6 @@
 <template>
     <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
-          <img src="./2.jpg" class="image"@click="seeMovie">
+          <img :src="apidate" class="image"@click="seeMovie">
           <div style="padding: 3px 10px;">
             <span @click="seeMovie">{{moiveDate.status}}</span>
             <div class="home_teacher">
@@ -31,7 +31,7 @@ export default {
   },
   created(){
     
-    //  this.moiveDate = this.$http.getText(this);
+    console.log(this.apidate);
    
   },
   props: {

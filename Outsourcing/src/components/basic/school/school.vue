@@ -5,10 +5,10 @@
         </div>
         <div class="z_basic">
             <Row>
-                <Col span="4">
+                <Col span="3">
                 <img src="./user.jpg" alt="" class="school_img">
                 </Col>
-                <Col span="12" class="school_infor">
+                <Col span="13" class="school_infor">
                 <span>大连东软信息学院</span> 大连东软信息学院（Dalian Neusoft University of Information）是经国家教育部批准设立，由东软控股投资举办的一所民办普通高等院校。 2000年经辽宁省教育厅批准，成立大连东方信息技术研修学院并成为东北大学网络教育学院大连分院，2001年转制为大连东软信息技术职业学院，2004年成为东北大学东软信息学院，
                 </Col>
                 <Col span="8">
@@ -47,19 +47,65 @@
                 </div>
                 </Col>
             </Row>
+           
+        </div>
+         <div class="school_movBar">
+
+
+            <Row>
+                <Col span="1">  <h1>课程</h1></Col>
+                <Col span="21"> <div class="line"></div></Col>
+                 <Col span="2">  <h2>更多 >>></h2></Col>
+                
+            </Row>
+            <moive :apidate=" require('./1.jpg')">
+            </moive>
+            <moive :apidate="require('./2.jpg')">
+            </moive>
+            <moive :apidate="require('./3.jpg')">
+            </moive>
+            <moive :apidate="require('./4.jpg')">
+            </moive>
+            <moive :apidate="require('./5.jpg')">
+            </moive>
+        </div>
+        <div class="school_movBar">
+
+
+            <Row>
+                <Col span="1">  <h1>直播</h1></Col>
+                <Col span="21"> <div class="line"></div></Col>
+                 <Col span="2">  <h2>更多 >>></h2></Col>
+                
+            </Row>
+            <moive :apidate=" require('./1.jpg')">
+            </moive>
+            <moive :apidate="require('./2.jpg')">
+            </moive>
+            <moive :apidate="require('./3.jpg')">
+            </moive>
+            <moive :apidate="require('./4.jpg')">
+            </moive>
+            <moive :apidate="require('./5.jpg')">
+            </moive>
+        </div>
+        <div class="school_teacher">
+
         </div>
     </div>
 </template>
 
 <script>
     import store from "@/vuex/index.js";
+    import moive from "../../moiv/moiv.vue";
     export default {
         data() {
             return {
                 icoflag: false,
                 formInline: {
                     user: "",
-                    password: ""
+                    password: "",
+                
                 },
                 ruleInline: {
                     user: [{
@@ -127,6 +173,9 @@
                 };
                 store.commit("updata", userdata);
             }
+        },
+        components: {
+            moive
         }
     };
 </script>
@@ -136,7 +185,27 @@
     .school {
         background: #eee;
     }
-    
+     .school_movBar  h1{
+      color: #333;
+      font-size: 25px;
+      font-weight: 400;
+      margin-bottom: 20px;
+  }
+    .school_movBar h2{
+        color: #888;
+        font-size: 18px;
+        margin-top: 4px;
+    }
+   .line{
+       width: 100%;
+       height: 19px;
+       border-bottom: #999 solid 1px;
+   }
+   .school_teacher{
+       width: 100%;
+       height: 300px;
+       background-color: #fff;
+   }
     .school_img {
         width: 120px;
         height: 120px;
@@ -144,10 +213,18 @@
         cursor: pointer;
         margin-top: -60px;
     }
+    .school_movBar{
+    height: 350px;
+    width: 1400px;
+    left: 0;
+    right: 0;
+    margin: 20px auto 0 auto;
+    }
     
     .z_basic {
-        min-width: 1200px;
+        min-width: 1300px;
         margin: 0 auto;
+        background-color: #fff;
     }
     
     .heade_img {
@@ -178,7 +255,9 @@
         text-align: center;
         margin-top: -59px;
     }
-    
+    .school_movBar{
+        margin-top: 60px;
+    }
     $--login-width: 300px;
     .ivu-form-inline .ivu-form-item {
         display: block;
