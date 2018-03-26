@@ -90,7 +90,34 @@
             </moive>
         </div>
         <div class="school_teacher">
-
+               <Row class="school_teacherbox2">
+                <Col span="1">  <h1>教师</h1></Col>
+                <Col span="21"> <div class="line"></div></Col>
+                 <Col span="2">  <h2>更多 >>></h2></Col>
+            </Row>
+            <Row class="school_teacherbox">
+                <Col span="8">
+                <img src="./user.jpg">
+                <p>
+                    张小三
+                    
+                </p>
+                </Col>
+                <Col span="8">
+                <img src="./user.jpg">
+                <p>
+                    张小三
+                </p>
+                </Col>
+                <Col span="8">
+                <img src="./user.jpg">
+                <p>
+                    张小三
+               
+                </p>
+                
+                </Col>
+            </Row>
         </div>
     </div>
 </template>
@@ -164,6 +191,7 @@
                     accountnum: 15180600303
                 };
                 store.commit("updata", userdata);
+                this.$router.push("/")
             },
             teacher() {
                 let userdata = {
@@ -205,6 +233,7 @@
        width: 100%;
        height: 300px;
        background-color: #fff;
+       margin-top: 80px;
    }
     .school_img {
         width: 120px;
@@ -224,7 +253,7 @@
     .z_basic {
         min-width: 1300px;
         margin: 0 auto;
-        background-color: #fff;
+        background-color: #eee;
     }
     
     .heade_img {
@@ -235,6 +264,7 @@
     .school_infor {
         color: #333;
         font-size: 16px;
+        padding: 0px 60px 0px 0px;
     }
     
     .school_infor span {
@@ -242,7 +272,31 @@
         font-weight: 600;
         display: block;
     }
-    
+    .school_teacherbox2{
+        width: 1400px;
+       margin: 20px auto 0px auto;
+        padding-top: 20px;
+    }
+    .school_teacherbox{
+        width: 1200px;
+        margin: 30px auto 0px auto;
+        cursor: pointer;
+       
+    }
+    .school_teacherbox img{
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+
+    }
+    .school_teacherbox p{
+        color: #222;
+        font-size: 24px;
+      display: inline;
+      vertical-align: top;
+      padding: 15px 0px 0px 20px;
+        
+    }
     .school_down {
         background-color: #fff;
     }
@@ -360,5 +414,8 @@
         color: #666;
         font-size: 18px;
         text-align: center;
+    }
+    .active{
+        color: #2196f3;
     }
 </style>

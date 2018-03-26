@@ -21,6 +21,6 @@ export default {
 </script>
 <style scoped>
 .basic{
-  background-color: #eee;
+  background-color: #fff;
 }
 </style>

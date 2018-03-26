@@ -34,6 +34,16 @@ export default [{
                 name: 'score',
                 component: r => require.ensure([], () => r(require('../components/basic/mov/searchmov.vue')), 'searchmov')
             }, {
+                path: 'student/:id',
+                name: 'student',
+                component: r => require.ensure([], () => r(require('../components/basic/student/student.vue')), 'student')
+
+            }, {
+                path: 'teacher/:id',
+                name: 'teacher',
+                component: r => require.ensure([], () => r(require('../components/basic/teacher/teacher.vue')), 'teacher')
+
+            }, {
                 path: 'showmov/:id',
                 name: 'showmov',
                 component: r => require.ensure([], () => r(require('../components/basic/mov/showmov.vue')), 'showmov')

@@ -321,7 +321,12 @@
         });
       },
       logdown: function() {
-        this.$router.push("/");
+        console.log(store.state.userdata.id)
+        switch(store.state.userdata.role){
+          case 10:
+              this.$router.push({name:'student',params:{id:store.state.userdata.id}})
+        }
+        
       },
       fnwork: function() {
         switch (this.userrole) {
