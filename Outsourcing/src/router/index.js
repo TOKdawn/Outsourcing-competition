@@ -36,8 +36,21 @@ export default [{
             }, {
                 path: 'student/:id',
                 name: 'student',
-                component: r => require.ensure([], () => r(require('../components/basic/student/student.vue')), 'student')
-
+                component: r => require.ensure([], () => r(require('../components/basic/student/student.vue')), 'student'),
+                redirect: 'student/:id/classonline',
+                children: [{
+                    path: 'classonline',
+                    component: r => require.ensure([], () => r(require('../components/basic/student/classonline/classonline.vue')), 'classonline'),
+                }, {
+                    path: 'classdown',
+                    component: r => require.ensure([], () => r(require('../components/basic/student/classdown/classdown.vue')), 'classdown'),
+                }, {
+                    path: 'homework',
+                    component: r => require.ensure([], () => r(require('../components/basic/student/classdown/classdown.vue')), 'homework'),
+                }, {
+                    path: 'shixun',
+                    component: r => require.ensure([], () => r(require('../components/basic/student/shixun/shixun.vue')), 'shixun'),
+                }]
             }, {
                 path: 'teacher/:id',
                 name: 'teacher',

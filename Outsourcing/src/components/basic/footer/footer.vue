@@ -69,7 +69,7 @@
 #footer{
     width: 100%;
     height: 350px;
-    margin-top: 50px;
+  
     background-color: #272727;
 }
 .footer_info{

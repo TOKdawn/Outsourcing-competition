@@ -252,6 +252,7 @@
     
     .z_basic {
         min-width: 1300px;
+        height: auto;
         margin: 0 auto;
         background-color: #eee;
     }
