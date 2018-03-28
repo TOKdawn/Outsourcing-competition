@@ -7,14 +7,14 @@
     </div>
   <el-container style="height: 800px; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-    <el-menu :default-openeds="['1', '3']">
+    <el-menu :default-openeds="[]">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>我的课程</template>
           <el-menu-item index="1-1" @click="routerlink(1)">直播课程</el-menu-item>
           <el-menu-item index="1-2" @click="routerlink(2)">录播课程</el-menu-item>
       </el-submenu>
       <el-submenu index="2">
-          <template slot="title"><i class="el-icon-message"></i>我的实训</template>   
+          <template slot="title"><i class="el-icon-news"></i>我的实训</template>   
           <el-menu-item index="2-1"  @click="routerlink(3)">实训列表</el-menu-item>
           <el-menu-item index="2-2"  @click="routerlink(4)">实训讨论</el-menu-item>
       </el-submenu>

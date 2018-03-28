@@ -22,7 +22,7 @@ export default {
 <style>
 @import "../../../assets/basic.css";
 .z_basic{
-  min-height: 80vh;
+  height: 600px;
 }
 .allschool{
   font-size: 30px;

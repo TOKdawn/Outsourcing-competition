@@ -1,11 +1,18 @@
 <template>
-    <div>cehngji </div> 
-     
+ 
+      <LineExample></LineExample>
 </template>
 <script>
-export default {
-  
-}
+   import LineExample from './chart.js'
+    export default {
+     
+      components: {
+        LineExample
+      }
+    }
+
+
+
 </script>
 <style scoped>
 

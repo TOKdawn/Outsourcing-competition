@@ -22,8 +22,8 @@ export default {
 
       return{
           moiveDate: {
-              status: 'dasdas',
-              lenth: 23
+              status: 'java零基础快速提升',
+              lenth: '大连东软信息学院'
           },
           
           
@@ -52,7 +52,7 @@ export default {
  .vidoe_cord {
     width: 250px;
     float: left;
-    margin: 0px 15px;
+    margin: 20px 15px;
   }
   
   .vidoe_cord span{

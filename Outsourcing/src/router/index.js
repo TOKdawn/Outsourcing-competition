@@ -46,10 +46,19 @@ export default [{
                     component: r => require.ensure([], () => r(require('../components/basic/student/classdown/classdown.vue')), 'classdown'),
                 }, {
                     path: 'homework',
-                    component: r => require.ensure([], () => r(require('../components/basic/student/classdown/classdown.vue')), 'homework'),
+                    component: r => require.ensure([], () => r(require('../components/basic/student/homework/homework.vue')), 'homework'),
                 }, {
                     path: 'shixun',
                     component: r => require.ensure([], () => r(require('../components/basic/student/shixun/shixun.vue')), 'shixun'),
+                }, {
+                    path: 'chengji',
+                    component: r => require.ensure([], () => r(require('../components/basic/student/chengji/chengji.vue')), 'chengji'),
+                }, {
+                    path: 'shoucang',
+                    component: r => require.ensure([], () => r(require('../components/basic/student/shoucang/shoucang.vue')), 'shoucang'),
+                }, {
+                    path: 'shixuntalk',
+                    component: r => require.ensure([], () => r(require('../components/basic/student/shixuntalk/shixuntalk.vue')), 'shixuntalk'),
                 }]
             }, {
                 path: 'teacher/:id',
