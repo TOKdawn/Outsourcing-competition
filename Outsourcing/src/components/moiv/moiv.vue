@@ -79,8 +79,8 @@ export default {
   .vidoe_cord{
     color: #888;
     text-align: left;
-    width: 248px;
-   height: 294px;
+   width: 220px;
+    height: 280px;
   }
 .home_teacher{
   margin: 8px 0px 0px 0px;

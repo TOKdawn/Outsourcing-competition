@@ -81,7 +81,9 @@
     font-size: 25px;
 }
 .autho_img{
-    width: 90px;
+    width: 80px;
+    border-radius: 40px;
+    border: #fff 2px solid;
 }
 </style>
 <script>
