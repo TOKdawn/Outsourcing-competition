@@ -12,8 +12,24 @@
                 <span>大连东软信息学院</span> 大连东软信息学院（Dalian Neusoft University of Information）是经国家教育部批准设立，由东软控股投资举办的一所民办普通高等院校。 2000年经辽宁省教育厅批准，成立大连东方信息技术研修学院并成为东北大学网络教育学院大连分院，2001年转制为大连东软信息技术职业学院，2004年成为东北大学东软信息学院，
                 </Col>
                 <Col span="8">
-                <div class="school_top">登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp录</div>
-                <div class="school_down">
+
+                <div class="school_top" v-if="userrole">
+                      公&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp告
+                </div>
+                <div class="school_top" v-else>
+                 
+                     登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp录
+                </div>
+                 <div class="school_down" v-if="userrole">
+                     <div class="school_notice">      <p>我校获大萨达撒大神批教育部首批“新工...</p>
+                     <p>2018年从自行车我校师生在“‘点赞十九大...</p>
+                     <p>关于20从自行车在18年4月某日清明节放假调课...</p>
+                      <p>2018年从自行车我校师生在“‘点赞十九大...</p>
+                     <p>关于2018从自行车在从现在年清明节放假调课...</p></div>
+                
+                 </div>
+
+                <div class="school_down" v-else>
     
     
                     <div class="logBar">
@@ -45,6 +61,9 @@
                         </FormItem>
                     </Form>
                 </div>
+
+
+
                 </Col>
             </Row>
            
@@ -58,6 +77,7 @@
                  <Col span="2">  <h2>更多 >>></h2></Col>
                 
             </Row>
+                    <div style="width:1280px; margin:auto;">
             <moive :apidate=" require('./1.jpg')">
             </moive>
             <moive :apidate="require('./2.jpg')">
@@ -68,16 +88,18 @@
             </moive>
             <moive :apidate="require('./5.jpg')">
             </moive>
+                    </div>
         </div>
         <div class="school_movBar">
 
 
-            <Row>
+            <Row >
                 <Col span="1">  <h1>直播</h1></Col>
                 <Col span="21"> <div class="line"></div></Col>
                  <Col span="2">  <h2>更多 >>></h2></Col>
                 
             </Row>
+            <div style="width:1280px; margin:auto;">
             <moive :apidate=" require('./1.jpg')">
             </moive>
             <moive :apidate="require('./2.jpg')">
@@ -88,7 +110,25 @@
             </moive>
             <moive :apidate="require('./5.jpg')">
             </moive>
+            </div>
         </div>
+
+      <div class="school_movBar">
+
+
+            <Row>
+                <Col span="1">  <h1>实训</h1></Col>
+                <Col span="21"> <div class="line"></div></Col>
+                 <Col span="2">  <h2>更多 >>></h2></Col>
+                
+            </Row>
+                    <div style="width:1280px; margin:auto;">
+           <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'400px'"></training>
+            <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'400px'"></training>
+             <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'400px'"></training>
+                    </div>
+        </div>
+
         <div class="school_teacher">
                <Row class="school_teacherbox2">
                 <Col span="1">  <h1>教师</h1></Col>
@@ -125,10 +165,12 @@
 <script>
     import store from "@/vuex/index.js";
     import moive from "../../moiv/moiv.vue";
+    import training from "../../training/training.vue";
     export default {
         data() {
             return {
                 icoflag: false,
+                userrole: false,
                 formInline: {
                     user: "",
                     password: "",
@@ -203,7 +245,11 @@
             }
         },
         components: {
-            moive
+            moive,
+            training
+        },
+        created(){
+            this.userrole = store.state.userdata.role;
         }
     };
 </script>
@@ -258,7 +304,7 @@
     }
     
     .heade_img {
-        background: url("./233.jpg") 0 0 /100% 100% no-repeat;
+        background: url("./shcoll.jpg") 0 0 /100% 100% no-repeat;
         height: 180px;
     }
     
@@ -418,5 +464,16 @@
     }
     .active{
         color: #2196f3;
+    }
+    .school_notice{
+        padding: 0px 30px 20px 30px;
+        
+    }
+    .school_notice p{
+        padding: 10px 0px 0px 0px;
+        line-height: 30px;
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
     }
 </style>

@@ -1,7 +1,17 @@
 <template>
   <div>
-         <div class="z_basic">
+         <div class="z_basic1">
             <div class="allschool">  全部高校</div> 
+          <div class="school_imgBar">
+            <div ><img src="../home/school1.png" alt=""></div>
+             <div ><img src="../home/school2.png" alt=""></div>
+              <div ><img src="../home/school3.png" alt=""></div>
+               <div ><img src="../home/school4.png" alt=""></div>
+                <div ><img src="../home/school2.png" alt=""></div>
+              <div ><img src="../home/school3.png" alt=""></div>
+               <div ><img src="../home/school4.png" alt=""></div>
+          </div>
+             <div class="allschool">  全部企业</div> 
           <div class="school_imgBar">
             <div ><img src="../home/school1.png" alt=""></div>
              <div ><img src="../home/school2.png" alt=""></div>
@@ -21,8 +31,8 @@ export default {
 </script>
 <style>
 @import "../../../assets/basic.css";
-.z_basic{
-  height: 600px;
+.z_basic1{
+  padding: 30px 0px;
 }
 .allschool{
   font-size: 30px;

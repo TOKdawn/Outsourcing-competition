@@ -5,7 +5,7 @@
         <p>你好,EVA-Sun 
             <br> 这个人很懒什么的都没留下</p>
     </div>
-  <el-container style="height: 800px; border: 1px solid #eee">
+  <el-container style="min-height: 800px; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
     <el-menu :default-openeds="[]">
       <el-submenu index="1">
@@ -22,6 +22,7 @@
       <el-menu-item index="3"  @click="routerlink(5)">我的作业</el-menu-item>
           <el-menu-item index="4"  @click="routerlink(6)">我的成绩</el-menu-item>
             <el-menu-item index="5"  @click="routerlink(7)">我的收藏</el-menu-item>
+            <el-menu-item index="6"  @click="routerlink(8)">我的信息</el-menu-item>
     </el-menu>
   </el-aside>
   <el-container>

@@ -251,17 +251,13 @@
           <h1>精彩实训</h1>
           <p>已有233万老师和同学在此发言</p>
         </Col>
-        <Col span="6">
-          <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'500px'"></training>
+        <Col span="16">
+          <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'400px'"></training>
+            <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'400px'"></training>
         </Col>
     </Row>
   </div>
   </div>
-    
-
-
-
-
     <thefooter></thefooter>
   </div>
 </template>
@@ -295,7 +291,7 @@ export default {
       ],
       work: "提交作业",
       clas: "下载课件"
-    };
+    }
   },
   created() {
     this.userrole = store.state.userdata.role;
@@ -766,6 +762,21 @@ $--center-width: 1300px;
   min-height: 300px;
   background-color: #4f6b94;
   display: block;
+}
+.home_training h1{
+  color: #fff;
+  font-size: 52px;
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+}
+.home_training p{
+    color: #fff;
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+  font-weight: 600;
 }
 </style>
 <style>

@@ -1,31 +1,20 @@
 <template>
 <div>
      <el-button type="primary" class="shixun_button">上传 <i class="el-icon-upload2"></i> </el-button>
-      <Card style="width:90%;margin: 20px auto 50px auto">
-        <p slot="title" class="shixun_tit">
-            软件体系架构四级项目
-            <span>项目进度65%</span>
-        </p>
-       <div class="shixun_teacher">
-           <Icon type="person"></Icon>王小明
-       </div>
-      <el-progress :text-inside="true" :stroke-width="15" :percentage="65" class="shixun_progress"></el-progress>
-    </Card>
-      <Card style="width:90%;margin: 20px auto">
-        <p slot="title" class="shixun_tit">
-            软件体系架构四级项目
-            <span>项目进度55%</span>
-        </p>
-        <div class="shixun_teacher">
-           <Icon type="person"></Icon>王小明
-       </div>
-      <el-progress :text-inside="true" :stroke-width="15" :percentage="55" class="shixun_progress"></el-progress>
-    </Card>
+ 
+       <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'550px'"></training>
+        <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'550px'"></training>
+         <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'550px'"></training>
+          <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'550px'"></training>
      </div>
 </template>
 <script>
+ import training from "../../../training/training.vue";
 export default {
-  
+ 
+   components:{
+      training
+  }
 }
 </script>
 <style >

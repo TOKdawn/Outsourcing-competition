@@ -12,7 +12,7 @@
           
         </p>
        <div class="shixun_teacher">
-           <Icon type="person"></Icon>王小明
+           <Icon type="person"></Icon> &nbsp王小明
        </div>
       <el-progress :text-inside="true" :stroke-width="15" :percentage="65" class="shixun_progress"></el-progress>
     </Card>
@@ -27,7 +27,7 @@
           
         </p>
         <div class="shixun_teacher">
-           <Icon type="person"></Icon>王小明
+           <Icon type="person"></Icon>&nbsp王小明
        </div>
       <el-progress :text-inside="true" :stroke-width="15" :percentage="55" class="shixun_progress"></el-progress>
     </Card>
@@ -72,8 +72,10 @@ export default {
 }
 .shixun_teacher{
     margin-top: 50px;
-    font-size: 16px;
+    font-size: 17px;
     margin-left: 10px;
+    padding-bottom: 10px;
+
     
 }
 </style>
