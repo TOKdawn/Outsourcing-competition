@@ -35,7 +35,8 @@ export default {
   data () {
       return {
           searchData: '',
-          imgsrc: require('./user.jpg')
+          imgsrc: require('./user.jpg'),
+          userrole: 0
       }
   },
   methods: {

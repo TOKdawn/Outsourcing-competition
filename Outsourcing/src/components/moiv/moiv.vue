@@ -25,6 +25,7 @@ export default {
               status: 'java零基础快速提升',
               lenth: '大连东软信息学院'
           },
+          _id: '123333'
           
           
       }
@@ -43,7 +44,7 @@ export default {
     },
     methods:{
       seeMovie: function(){
-         this.$router.push({ name: "showmov", params: { id: _id } });
+         this.$router.push({ name: "showmov", params: { id: '1232' } });
       }
     }
 }

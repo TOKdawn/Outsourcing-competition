@@ -19,7 +19,12 @@ export default [{
                 path: 'allschool',
                 component: r => require.ensure([], () => r(require('../components/basic/allschool/allschool.vue')), 'allschool')
             }, {
+                path: 'movieshow/:id',
+                name: 'movieshow',
+                component: r => require.ensure([], () => r(require('../components/basic/movieshow/movieshow.vue')), 'movieshow')
+            }, {
                 path: 'downwork',
+
                 component: r => require.ensure([], () => r(require('../components/basic/downwork/downwork')), 'downwork')
 
             }, {
