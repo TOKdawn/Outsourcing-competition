@@ -50,6 +50,9 @@ export default {
       logdown: function(){
            this.$router.push('/');
       }
+  },
+  created(){
+      this.userrole = store.state.userdata.role;
   }
 }
 </script>

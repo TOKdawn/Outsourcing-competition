@@ -67,6 +67,7 @@
         <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">热门视频</span></p>
       <div class="vidoe_bar">
         <movie :apidate="require('./1.jpg')"></movie>
+
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./2.jpg" class="image">
           <div style="padding: 3px 10px;">
@@ -135,90 +136,17 @@
 
       <div class="vidoe">
       <p>
-        <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">推荐视频</span></p>
+        <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">正在直播</span></p>
 
       <div class="vidoe_bar">
-        
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
-          <img src="./2.jpg" class="image">
-          <div style="padding: 3px 10px;">
-            <span>JAVA零基础提高</span>
-            <div class="home_teacher">
-              <p style="">
-                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon> 大连东软信息学院李老师</p>
-            </div>
-            <div class="home_infoBar">
-              <div>
-                <Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
-              <div>
-                <Icon style="font-size:14px" type="eye"></Icon>23</div>
-  
-              <div>
-                <Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
-            </div>
-          </div>
-        </el-card>
-  
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
-          <img src="./3.jpg" class="image">
-          <div style="padding: 3px 10px;">
-            <span>JAVA零基础提高</span>
-            <div class="home_teacher">
-              <p style="">
-                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon> 大连东软信息学院李老师</p>
-            </div>
-            <div class="home_infoBar">
-              <div>
-                <Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
-              <div>
-                <Icon style="font-size:14px" type="eye"></Icon>23</div>
-  
-              <div>
-                <Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
-            </div>
-          </div>
-        </el-card>
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
-          <img src="./4.jpg" class="image">
-          <div style="padding: 3px 10px;">
-            <span>JAVA零基础提高</span>
-            <div class="home_teacher">
-              <p style="">
-                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon> 大连东软信息学院李老师</p>
-            </div>
-            <div class="home_infoBar">
-              <div>
-                <Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
-              <div>
-                <Icon style="font-size:14px" type="eye"></Icon>23</div>
-  
-              <div>
-                <Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
-            </div>
-          </div>
-        </el-card>
-  
-        <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
-          <img src="./5.jpg" class="image">
-          <div style="padding: 3px 10px;">
-            <span>JAVA零基础提高</span>
-            <div class="home_teacher">
-              <p style="">
-                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon> 大连东软信息学院李老师</p>
-            </div>
-            <div class="home_infoBar">
-              <div>
-                <Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
-              <div>
-                <Icon style="font-size:14px" type="eye"></Icon>23</div>
-  
-              <div>
-                <Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
-            </div>
-          </div>
-        </el-card>
-  
-  
+         <live :apidate="require('./4.jpg')" :lenth="'亮老师'"></live>
+      
+         <live :apidate="require('./1.jpg')" :lenth="'亮老师'"></live>
+      
+         <live :apidate="require('./3.jpg')" :lenth="'亮老师'"></live>
+      
+         <live :apidate="require('./4.jpg')" :lenth="'亮老师'"></live>
+      
       </div>
     </div>
         
@@ -267,6 +195,7 @@ import store from "../../../vuex/index";
 import thefooter from "../footer/footer";
 import movie from "../../moiv/moiv.vue";
 import training from "../../training/training.vue";
+import live from "../../live/livecomp.vue";
 export default {
   data() {
     return {
@@ -362,7 +291,8 @@ export default {
   components: {
     thefooter,
     movie,
-    training
+    training,
+    live
   }
 };
 </script>

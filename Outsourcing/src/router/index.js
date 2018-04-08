@@ -76,6 +76,11 @@ export default [{
                 component: r => require.ensure([], () => r(require('../components/basic/mov/showmov.vue')), 'showmov')
 
             }, {
+                path: 'live/:id',
+                name: 'live',
+                component: r => require.ensure([], () => r(require('../components/basic/live/live.vue')), 'live')
+
+            }, {
                 path: 'login/:schoolId',
                 name: 'login',
                 component: r => require.ensure([], () => r(require('../components/basic/school/school.vue')), 'login')

@@ -59,8 +59,6 @@
       </div>
 
     </div>
-
-    
     <div class="movie_basic">
     <div class="movie_comment">
       <Row >
@@ -75,18 +73,213 @@
                  </Col>
               <Col span="4" >
                 <Button type="info" class="comment_enter">发送评论</Button> </Col>  
-            </Row>   
-            <Row>
-              <Col span="4"> </Col>
-              <Col  span="20"> </Col>  
-            </Row>   
-      
-        </Col>
-        
-        
-        <Col span="6">ddd</Col>
-      </Row>
+            </Row>  
 
+            <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                         <Row >
+                      <Col span="2" class="comment_head_min"> <img src="./hdsad3.png" alt=""></Col>
+                      <Col  span="22" class="comment_say_min"> 
+                       <h1> Sanmida</h1>
+                        <p> 楼主说的好</p>
+                     <Row>
+                 
+                          <Col span="5">2018-03-24 20:23</Col>
+                          <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                
+                           <Col span="5"> 回复</Col>
+                      </Row>
+                
+                     </Col>  
+                    </Row>   
+
+                      <Row >
+                      <Col span="2" class="comment_head_min"> <img src="./hdsad3.png" alt=""></Col>
+                      <Col  span="22" class="comment_say_min"> 
+                       <h1> Sanmida</h1>
+                        <p> 楼主说的好</p>
+                     <Row>
+                 
+                          <Col span="5">2018-03-24 20:23</Col>
+                          <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                
+                           <Col span="5"> 回复</Col>
+                      </Row>
+                
+                     </Col>  
+                    </Row>  
+
+              </Col>  
+            </Row>  
+
+
+            <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                         <Row >
+                      <Col span="2" class="comment_head_min"> <img src="./hdsad3.png" alt=""></Col>
+                      <Col  span="22" class="comment_say_min"> 
+                       <h1> Sanmida</h1>
+                        <p> 楼主说的好</p>
+                     <Row>
+                 
+                          <Col span="5">2018-03-24 20:23</Col>
+                          <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                
+                           <Col span="5"> 回复</Col>
+                      </Row>
+                
+                     </Col>  
+                    </Row>   
+
+                      <Row >
+                      <Col span="2" class="comment_head_min"> <img src="./hdsad3.png" alt=""></Col>
+                      <Col  span="22" class="comment_say_min"> 
+                       <h1> Sanmida</h1>
+                        <p> 楼主说的好</p>
+                     <Row>
+                 
+                          <Col span="5">2018-03-24 20:23</Col>
+                          <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                
+                           <Col span="5"> 回复</Col>
+                      </Row>
+                
+                     </Col>  
+                    </Row>  
+
+              </Col>  
+            </Row>  
+
+
+
+
+
+
+            <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                       
+
+              </Col>  
+            </Row>  
+
+                <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                       
+
+              </Col>  
+            </Row> 
+
+            x  <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                       
+
+              </Col>  
+            </Row> 
+
+              <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                       
+
+              </Col>  
+            </Row> 
+
+              <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                       
+
+              </Col>  
+            </Row> 
+
+              <Row >
+              <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
+              <Col  span="20" class="comment_say"> 
+                <h1> 阴影中的曙光</h1>
+                <p>  Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+                <Row class="comm_info">
+                  <Col span="2">#12</Col>
+                  <Col span="5">2018-03-24 20:23</Col>
+                  <Col span="2"> <Icon type="thumbsup"></Icon>28</Col>
+                  <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
+                  <Col span="5"> 回复</Col>
+                </Row>
+                       
+
+              </Col>  
+            </Row> 
+            <div class="movie_fenye"><Page :total="680" show-elevator ></Page></div> 
+        </Col>
+        <Col span="5" class="dadsad">ddd</Col>
+      </Row>
     </div>
   </div>
 </div>
@@ -280,11 +473,63 @@ line-height: 60px;
   border-radius: 40px;
 }
 .comment_main {
-  margin: 20px 0px;
+  margin: 20px 0px 40px 0px;
   line-height: 24px;
 }
 .comment_enter {
   margin: 20px 0px 20px 30px;
   height: 70px;
+}
+.comment_say{
+  border-top:2px #eee solid;
+}
+.comment_head_min img{
+  width: 50px;
+
+}
+.comment_say{
+  padding: 10px 0px;
+}
+.comment_say h1{
+  font-size: 16px;
+  margin-bottom: 5px;
+  
+}
+.comment_say p{
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.comm_info{
+  color: #666;
+  font-weight: 400;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+.comm_info i{
+  font-size: 18px;
+  margin-right: 3px;
+}
+.comment_say_min{
+  padding: 10px 0px 5px 0px;
+}
+.comment_say_min h1{
+display: inline-block;
+width: 110px;
+font-size: 13px;
+}
+.comment_say_min p{
+  display: inline-block;
+
+}
+.dadsad{
+  height: 200px;
+  background-color: #1e88e5;
+}
+.movie_fenye{
+  width: 100%;
+  text-align: center;
+  margin: 20px 0px 30px 0px;
 }
 </style>
