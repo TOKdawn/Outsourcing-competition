@@ -278,7 +278,7 @@
             </Row> 
             <div class="movie_fenye"><Page :total="680" show-elevator ></Page></div> 
         </Col>
-        <Col span="5" class="dadsad">ddd</Col>
+        <Col span="5" class="dadsad"> <img src="./show.png" alt="" class="movie_showss"></Col>
       </Row>
     </div>
   </div>
@@ -525,11 +525,18 @@ font-size: 13px;
 }
 .dadsad{
   height: 200px;
-  background-color: #1e88e5;
+  background-color: #fff;
+  
 }
 .movie_fenye{
   width: 100%;
   text-align: center;
   margin: 20px 0px 30px 0px;
+}
+.movie_showss{
+  width: 100%;
+ margin: 63px 0px 0px 20px;
+ padding: 0px;
+border-top: #eee 1px solid;
 }
 </style>

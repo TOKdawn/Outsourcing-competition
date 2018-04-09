@@ -355,19 +355,19 @@ $--center-width: 1300px;
 }
 
 .bg1 {
-  background: url("./1.jpg") 0 0 /100% auto;
+  background: url("./ada.jpg") 0 0 /100% auto;
 }
 
 .bg2 {
-  background: url("./2.jpg") 0 0/100% auto;
+  background: url("./ada.jpg") 0 0/100% auto;
 }
 
 .bg3 {
-  background: url("./3.jpg") 0 0 /100% auto;
+  background: url("./ada.jpg") 0 0 /100% auto;
 }
 
 .bg4 {
-  background: url("./4.jpg") 0 0/100% auto;
+  background: url("./ada.jpg") 0 0/100% auto;
 }
 
 #home {
