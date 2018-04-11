@@ -2,7 +2,7 @@
     <el-card :body-style="{ padding: '0px' }" class="live_cord">
           <img :src="apidate" class="image"@click="seeMovie">
           <div style="padding: 3px 10px;">
-            <span @click="seeMovie">{{moiveDate.status}}</span>
+            <span @click="seeMovie">{{this.title}}</span>
             <div class="live_infoBar">
               <div><Icon style="font-size:16px" type="eye"></Icon> &nbsp23</div>
              <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>  {{this.lenth}} </p>
@@ -35,6 +35,10 @@ export default {
             default: ""
         },
         lenth:{
+            type: String,
+            default: "张老师"
+        },
+        title:{
             type: String,
             default: "张老师"
         }
@@ -82,7 +86,7 @@ export default {
     color: #888;
     text-align: left;
    width: 220px;
-    height: 260px;
+    height: 220px;
   }
 .live_teacher{
   margin: 8px 0px 0px 0px;

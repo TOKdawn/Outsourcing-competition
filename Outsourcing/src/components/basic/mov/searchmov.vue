@@ -1,24 +1,19 @@
 <template>
 <div>
  <div class="mov_list">
-     
-        <el-card v-for="tiem in showData" :key="tiem._id" class="mov_card">
-      <img :src="tiem.imgPath " class="image">
-      <div style="padding: 14px;">
-        <span>{{tiem.fileName}}</span>
-        <div class="bottom clearfix">
-          <time class="time">{{ tiem.meta.updateAt}}</time>
-          <el-button type="text" class="button" @click="mov(tiem._id)">观看视频</el-button>
-        </div>
-      </div>
-    </el-card>
-     
+      <movie :apidate="require('./1.jpg')"></movie>
+       <movie :apidate="require('./1.jpg')"></movie>
+        <movie :apidate="require('./1.jpg')"></movie>
+         <movie :apidate="require('./1.jpg')"></movie>
+          <movie :apidate="require('./1.jpg')"></movie>
+           <movie :apidate="require('./1.jpg')"></movie>
+      
   </div>
-  <tfooter></tfooter>
+
 </div>
 </template>
 <script type="text/ecmascript-6">
-import tfooter from "../footer/footer";
+import movie from '../../moiv/moiv.vue'
 export default {
   data() {
     return {
@@ -26,7 +21,7 @@ export default {
     };
   },
   components: {
-    tfooter
+    movie
   },
   methods: {
   
@@ -67,7 +62,7 @@ export default {
   left: 0;
   right: 0;
   margin: 20px auto 10px auto;
-  background-color: antiquewhite;
+
   height: 800px;
 }
 .mov_card{

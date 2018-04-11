@@ -7,9 +7,9 @@
               <p style=""><Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>  {{moiveDate.lenth}} </p>
             </div>
             <div class="home_infoBar">
-              <div><Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
-              <div><Icon style="font-size:14px" type="eye"></Icon>23</div>  
-          <div><Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
+              <div><Icon style="font-size:14px" type="chatbubble-working"></Icon>&nbsp99+</div>
+              <div><Icon style="font-size:14px" type="eye"></Icon> &nbsp23</div>  
+          <div><Icon style="font-size:14px" type="ios-heart"></Icon>&nbsp87</div>
             </div>
           </div>
         </el-card>
@@ -22,8 +22,8 @@ export default {
 
       return{
           moiveDate: {
-              status: 'java零基础快速提升',
-              lenth: '大连东软信息学院'
+              status: 'FlieMaker使用指南',
+              lenth: '某某市理工学院'
           },
           _id: '123333'
           

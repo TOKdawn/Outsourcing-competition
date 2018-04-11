@@ -31,8 +31,8 @@
         <div></div>
         <div>首页</div>
         <div>全部院校</div>
-        <div>加入我们</div>
-        <div>加入企业</div>
+        <div @click="gojoin()">加入我们</div>
+        <div @click="gojoin()">加入企业</div>
         <div></div>
       </div>
   
@@ -51,8 +51,6 @@
         <img src="./school5.png" alt="">
       </div>
   
- 
-
       </el-col>
       </el-row>
   
@@ -71,19 +69,19 @@
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./2.jpg" class="image">
           <div style="padding: 3px 10px;">
-            <span>JAVA零基础提高</span>
+            <span>Html网页实战开发</span>
             <div class="home_teacher">
               <p style="">
-                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon> 大连东软信息学院李老师</p>
+                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>&nbsp 某某市理工学院李老师</p>
             </div>
             <div class="home_infoBar">
               <div>
-                <Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
+                <Icon style="font-size:14px" type="chatbubble-working"></Icon>&nbsp99+</div>
               <div>
-                <Icon style="font-size:14px" type="eye"></Icon>23</div>
+                <Icon style="font-size:14px" type="eye"></Icon>&nbsp23</div>
   
               <div>
-                <Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
+                <Icon style="font-size:14px" type="ios-heart"></Icon>&nbsp87</div>
             </div>
           </div>
         </el-card>
@@ -92,19 +90,19 @@
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./4.jpg" class="image">
           <div style="padding: 3px 10px;">
-            <span>JAVA零基础提高</span>
+            <span>产品经理的UI实战</span>
             <div class="home_teacher">
               <p style="">
-                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon> 大连东软信息学院李老师</p>
+                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>&nbsp 某某市理工学院李老师</p>
             </div>
             <div class="home_infoBar">
               <div>
-                <Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
+                <Icon style="font-size:14px" type="chatbubble-working"></Icon>&nbsp99+</div>
               <div>
-                <Icon style="font-size:14px" type="eye"></Icon>23</div>
+                <Icon style="font-size:14px" type="eye"></Icon>&nbsp23</div>
   
               <div>
-                <Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
+                <Icon style="font-size:14px" type="ios-heart"></Icon>&nbsp87</div>
             </div>
           </div>
         </el-card>
@@ -112,19 +110,19 @@
         <el-card :body-style="{ padding: '0px' }" class="vidoe_cord">
           <img src="./5.jpg" class="image">
           <div style="padding: 3px 10px;">
-            <span>JAVA零基础提高</span>
+            <span>JavaScript实战</span>
             <div class="home_teacher">
               <p style="">
-                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon> 大连东软信息学院李老师</p>
+                <Icon type="person" style="font-size:16px; margin-left:10px;"></Icon>&nbsp 某某市理工学院李老师</p>
             </div>
             <div class="home_infoBar">
               <div>
-                <Icon style="font-size:14px" type="chatbubble-working"></Icon>99+</div>
+                <Icon style="font-size:14px" type="chatbubble-working"></Icon>&nbsp 99+</div>
               <div>
-                <Icon style="font-size:14px" type="eye"></Icon>23</div>
+                <Icon style="font-size:14px" type="eye"></Icon>&nbsp 23</div>
   
               <div>
-                <Icon style="font-size:14px" type="ios-heart"></Icon>87</div>
+                <Icon style="font-size:14px" type="ios-heart"></Icon>&nbsp87</div>
             </div>
           </div>
         </el-card>
@@ -139,13 +137,13 @@
         <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">正在直播</span></p>
 
       <div class="vidoe_bar">
-         <live :apidate="require('./4.jpg')" :lenth="'亮老师'"></live>
+         <live :apidate="require('../../live/1.jpg')" :lenth="'张老师'" :title="'Python开发入门'"></live>
       
-         <live :apidate="require('./1.jpg')" :lenth="'亮老师'"></live>
+         <live :apidate="require('../../live/n2.jpg')" :lenth="'李老师'" :title="'深入浅出Vue'"></live>
       
-         <live :apidate="require('./3.jpg')" :lenth="'亮老师'"></live>
+         <live :apidate="require('../../live/n3.jpg')" :lenth="'亮老师'" :title="'数据挖掘基础教程'"></live>
       
-         <live :apidate="require('./4.jpg')" :lenth="'亮老师'"></live>
+         <live :apidate="require('../../live/n4.jpg')" :lenth="'亮老师'" :title="'Python开发网络爬虫'"></live>
       
       </div>
     </div>
@@ -229,6 +227,9 @@ export default {
     }
   },
   methods: {
+    gojoin: function(){
+      this.$router.push("/basic/join");
+    },
     gopath: function(thepath) {
       console.log(thepath);
       this.$router.push(thepath);

@@ -7,8 +7,8 @@
     <el-col :span="16">
 
     <div class="header_buttonBar">
-        <div>首页</div>
-        <div>加盟院校</div>
+        <div @click="backhome">首页</div>
+        <div>全部院校</div>
         <div>加入我们</div>
         <div>加入企业</div>
       </div>
@@ -49,7 +49,10 @@ export default {
       },
       logdown: function(){
            this.$router.push('/');
-      }
+      },
+        gojoin: function(){
+      this.$router.push("/basic/join");
+    },
   },
   created(){
       this.userrole = store.state.userdata.role;
