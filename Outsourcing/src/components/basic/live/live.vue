@@ -78,7 +78,7 @@
                                 <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>
                                
                         </div>
-                          <Button type="primary" class="comm_sent"> 发送</Button>
+                          <Button type="primary" class="comm_sent" @click="sendMessage()"> 发送</Button>
                     </div>
                 </div>
 
@@ -88,6 +88,10 @@
   </div>
 </template>
 <script>
+import VueSocketio from 'vue-socket.io';
+import socketio from 'socket.io-client';
+import Vue from 'vue';
+Vue.use(VueSocketio, socketio('ws://172.20.171.122:3000',{path:'/room/123456'}));
     export default {
   data() {
     return {
@@ -102,62 +106,62 @@
             number: 1233,
         },
         comments: [
-            {
-                uname:'张同学',
-                utext:'老师再说下MVC是啥呗',
-            },
-            {
-                uname:'朱同学',
-                utext:'MVC和MVVM有啥区别',
-            },
-            {
-                uname:'王同学',
-                utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            },{
-                uname:'张同学',
-                utext:'老师再说下MVC是啥呗',
-            },
-            {
-                uname:'朱同学',
-                utext:'MVC和MVVM有啥区别',
-            },
-            {
-                uname:'王同学',
-                utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            },{
-                uname:'张同学',
-                utext:'老师再说下MVC是啥呗',
-            },
-            {
-                uname:'朱同学',
-                utext:'MVC和MVVM有啥区别',
-            },
-            {
-                uname:'王同学',
-                utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            },{
-                uname:'张同学',
-                utext:'老师再说下MVC是啥呗',
-            },
-            {
-                uname:'朱同学',
-                utext:'MVC和MVVM有啥区别',
-            },
-            {
-                uname:'王同学',
-                utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            },{
-                uname:'张同学',
-                utext:'老师再说下MVC是啥呗',
-            },
-            {
-                uname:'朱同学',
-                utext:'MVC和MVVM有啥区别',
-            },
-            {
-                uname:'王同学',
-                utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            },
+            // {
+            //     uname:'张同学',
+            //     utext:'老师再说下MVC是啥呗',
+            // },
+            // {
+            //     uname:'朱同学',
+            //     utext:'MVC和MVVM有啥区别',
+            // },
+            // {
+            //     uname:'王同学',
+            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
+            // },{
+            //     uname:'张同学',
+            //     utext:'老师再说下MVC是啥呗',
+            // },
+            // {
+            //     uname:'朱同学',
+            //     utext:'MVC和MVVM有啥区别',
+            // },
+            // {
+            //     uname:'王同学',
+            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
+            // },{
+            //     uname:'张同学',
+            //     utext:'老师再说下MVC是啥呗',
+            // },
+            // {
+            //     uname:'朱同学',
+            //     utext:'MVC和MVVM有啥区别',
+            // },
+            // {
+            //     uname:'王同学',
+            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
+            // },{
+            //     uname:'张同学',
+            //     utext:'老师再说下MVC是啥呗',
+            // },
+            // {
+            //     uname:'朱同学',
+            //     utext:'MVC和MVVM有啥区别',
+            // },
+            // {
+            //     uname:'王同学',
+            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
+            // },{
+            //     uname:'张同学',
+            //     utext:'老师再说下MVC是啥呗',
+            // },
+            // {
+            //     uname:'朱同学',
+            //     utext:'MVC和MVVM有啥区别',
+            // },
+            // {
+            //     uname:'王同学',
+            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
+            // },
         ]
         
     }
@@ -169,11 +173,31 @@
         return (this.live.title.length>8) ? this.live.title.substring(0,7)+'...'  : this.live.title;
     }  
   },
-  methods: {},
-  created() {
-   
+  methods: {
+      sendMessage: function(){
+         this.$socket.emit('message',this.user_comment);
+         this.user_comment = '';
+      }
   },
-  components: {}
+  created() {
+    // Vue.use(VueSocketio, '172.20.171.122:3000');
+  },
+  components: {},
+   sockets:{
+    connect: function(){
+    console.log("sucess");
+    this.$socket.emit('join','甘霖娘')
+    },
+    message: function(val){
+        console.log(val)
+        this.comments.push(JSON.parse(val));
+    },
+    sys: function(val){
+            console.log(val)
+        this.comments.push(JSON.parse(val));
+    }
+
+  },
 };
 </script>
 <style scoped>
