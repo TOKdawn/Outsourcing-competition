@@ -41,12 +41,16 @@ export default {
         title:{
             type: String,
             default: "张老师"
+        },
+        roomID:{
+          type: Number,
+          default: 123456
         }
 
     },
     methods:{
       seeMovie: function(){
-         this.$router.push({ name: "live", params: { id: '1232' } });
+         this.$router.push({ name: "live", params: { id: this.roomID } });
       }
     }
 }

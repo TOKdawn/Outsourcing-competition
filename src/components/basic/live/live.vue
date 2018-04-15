@@ -1,5 +1,20 @@
 <template>
   <div class="live_basic">
+      <el-dialog width="50%" title="hbase 测试题" :visible.sync="innerVisible" append-to-body>
+						<div>
+		<el-container>
+			<el-main>
+				<div v-for="question in questions">
+					<p>{{question.title}}</p>
+					<div v-for="(select, index) in question.selects">
+						<el-radio :v-model=select.modelname :label=index >{{select.answer}}</el-radio>
+					</div>
+				</div>
+                <button>提交</button>
+			</el-main>
+		</el-container>
+	</div>
+	</el-dialog>
      <div class="live_bg"></div>
      <div class="live_show">
             <Row>
@@ -46,9 +61,23 @@
                             </Row>
                         </div>
                         <div class="left_main">
-
+                            <video id="videoElement" style="width: 878px"></video>
                         </div>   
                         <div class="left_bottem">
+                             <Row>
+                                 <Col span="4">
+                                    dsa
+                                 </Col>
+                                 <Col span="5">
+dasdas
+                                 </Col>
+                                 <Col span="11">
+ddd
+                                 </Col>
+                                 <Col span="4">
+                                 <Button type="primary" :disabled="textshow" @click="innershow">课堂作业</Button>
+                                 </Col>
+                             </Row>
 
                         </div>
                     </div>
@@ -91,12 +120,18 @@
 import VueSocketio from 'vue-socket.io';
 import socketio from 'socket.io-client';
 import Vue from 'vue';
-Vue.use(VueSocketio, socketio('ws://172.20.171.122:3000',{path:'/room/123456'}));
-    export default {
+import flvjs from 'flv';
+
+
+
+export default {
   data() {
     return {
+        client:'',
         user_comment:'',
-
+        textshow: false,
+        innerVisible: false,
+    
         live:{
             title: "未命名直播",
             classification: "未知分类",
@@ -106,63 +141,81 @@ Vue.use(VueSocketio, socketio('ws://172.20.171.122:3000',{path:'/room/123456'}))
             number: 1233,
         },
         comments: [
-            // {
-            //     uname:'张同学',
-            //     utext:'老师再说下MVC是啥呗',
-            // },
-            // {
-            //     uname:'朱同学',
-            //     utext:'MVC和MVVM有啥区别',
-            // },
-            // {
-            //     uname:'王同学',
-            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            // },{
-            //     uname:'张同学',
-            //     utext:'老师再说下MVC是啥呗',
-            // },
-            // {
-            //     uname:'朱同学',
-            //     utext:'MVC和MVVM有啥区别',
-            // },
-            // {
-            //     uname:'王同学',
-            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            // },{
-            //     uname:'张同学',
-            //     utext:'老师再说下MVC是啥呗',
-            // },
-            // {
-            //     uname:'朱同学',
-            //     utext:'MVC和MVVM有啥区别',
-            // },
-            // {
-            //     uname:'王同学',
-            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            // },{
-            //     uname:'张同学',
-            //     utext:'老师再说下MVC是啥呗',
-            // },
-            // {
-            //     uname:'朱同学',
-            //     utext:'MVC和MVVM有啥区别',
-            // },
-            // {
-            //     uname:'王同学',
-            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            // },{
-            //     uname:'张同学',
-            //     utext:'老师再说下MVC是啥呗',
-            // },
-            // {
-            //     uname:'朱同学',
-            //     utext:'MVC和MVVM有啥区别',
-            // },
-            // {
-            //     uname:'王同学',
-            //     utext:'66666dasdasddasdsadasasdsaasdasdasdsadasdsa666',
-            // },
-        ]
+         
+        ],
+        radio: '1',
+		questions: [{
+			title: 'Hbase 如何安装',
+			selects: [{
+				modelname: 'radio1',
+				answer: 'linux'
+			},{
+				modelname: 'radio1',
+				answer: 'windows'
+			}]
+		},
+		{
+			title: 'Hbase 如何卸载',
+			selects: [{
+				modelname: 'radio2',
+				answer: 'linux'
+			},{
+				modelname: 'radio2',
+				answer: 'windows'
+			}]
+		},
+		{
+			title: 'hadoop 厉不厉害',
+			selects: [{
+				modelname: 'radio3',
+				answer: 'yes'
+			},{
+				modelname: 'radio3',
+				answer: 'no'
+			},{
+				modelname: 'radio3',
+				answer: 'i don\'t know'
+			}]
+		},
+		{
+			title: 'hadoop 厉不厉害',
+			selects: [{
+				modelname: 'radio3',
+				answer: 'yes'
+			},{
+				modelname: 'radio3',
+				answer: 'no'
+			},{
+				modelname: 'radio3',
+				answer: 'i don\'t know'
+			}]
+		},
+		{
+			title: 'hadoop 厉不厉害',
+			selects: [{
+				modelname: 'radio3',
+				answer: 'yes'
+			},{
+				modelname: 'radio3',
+				answer: 'no'
+			},{
+				modelname: 'radio3',
+				answer: 'i don\'t know'
+			}]
+		},
+		{
+			title: 'hadoop 厉不厉害',
+			selects: [{
+				modelname: 'radio3',
+				answer: 'yes'
+			},{
+				modelname: 'radio3',
+				answer: 'no'
+			},{
+				modelname: 'radio3',
+				answer: 'i don\'t know'
+			}]
+		}]
         
     }
   },
@@ -175,29 +228,65 @@ Vue.use(VueSocketio, socketio('ws://172.20.171.122:3000',{path:'/room/123456'}))
   },
   methods: {
       sendMessage: function(){
-         this.$socket.emit('message',this.user_comment);
+           this.comments.push({uname: '你自己' ,utext: this.user_comment});
+         this.client.emit('msg',this.user_comment);
          this.user_comment = '';
+         
+      },
+      innershow: function(){
+          this.innerVisible=true;
       }
   },
   created() {
     // Vue.use(VueSocketio, '172.20.171.122:3000');
+     let _this = this; 
+    this.client =  socketio('ws://172.19.210.149:7001',{query:{room:this.$route.params.id,userID:'甘霖娘'}});
+   this.client.on('connect',function(){
+    console.log("sucess");
+    // this.$socket.emit('join','甘霖娘')
+    });
+   
+   this.client.on( 'msg', function(uname,utext){
+    //    console.log(this.comments);
+    // console.log({uname,utext})
+        _this.comments.push({uname,utext});
+    },);
+    this.client.on('online', function(val){
+        console.log(val);
+        _this.$Message.warning('这是一条警告的提示');
+
+    })
   },
   components: {},
-   sockets:{
-    connect: function(){
-    console.log("sucess");
-    this.$socket.emit('join','甘霖娘')
-    },
-    message: function(val){
-        console.log(val)
-        this.comments.push(JSON.parse(val));
-    },
-    sys: function(val){
-            console.log(val)
-        this.comments.push(JSON.parse(val));
-    }
+//    sockets:{
+//     connect: function(){
+//     console.log("sucess");
+//     // this.$socket.emit('join','甘霖娘')
+//     },
+//     msg: function(val){
+//         console.log(val)
+//         this.comments.push(JSON.parse(val));
+//     },
+//     online: function(val){
+            
+//     this.$Message.warning('这是一条警告的提示');
+//     console.log("online",val);
+//         this.comments.push(JSON.parse(val));
+//     }
 
-  },
+//   },
+  mounted(){
+    if (flvjs.isSupported()) {
+        var videoElement = document.getElementById('videoElement');
+        var flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+            url: `http://172.19.210.149:9090/live/${this.$route.params.id}.flv`
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+    }
+  }
 };
 </script>
 <style scoped>
@@ -244,8 +333,8 @@ Vue.use(VueSocketio, socketio('ws://172.20.171.122:3000',{path:'/room/123456'}))
     line-height: 34px;
 }
 .left_main{
-    height: 500px;
-    background-color: black;
+    height: 494px;
+   
 }
 .left_bottem{
     height: 100px;

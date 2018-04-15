@@ -45,10 +45,10 @@
       <div class="home_schoolBar">
         <p @click="gopath('basic/allschool')">全部合作高校</p>
         <img src="./school1.png" alt="" @click="gopathToken('123')">
-        <img src="./school2.png" alt="">
-        <img src="./school3.png" alt="">
-        <img src="./school4.png" alt="">
-        <img src="./school5.png" alt="">
+        <img src="./school2.png" alt="" @click="gopathToken('123')">
+        <img src="./school3.png" alt="" @click="gopathToken('123')">
+        <img src="./school4.png" alt="" @click="gopathToken('123')">
+        <img src="./school5.png" alt="" @click="gopathToken('123')">
       </div>
   
       </el-col>
@@ -137,14 +137,13 @@
         <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">正在直播</span></p>
 
       <div class="vidoe_bar">
-         <live :apidate="require('../../live/1.jpg')" :lenth="'张老师'" :title="'Python开发入门'"></live>
+    
+          <div v-for=" tiem in liveroom" key="tiem.roomID">
+            <live :apidate="require('../../live/n4.jpg')" :lenth="'李老师'" :title="tiem.title" :roomID="tiem.roomID"></live>
       
-         <live :apidate="require('../../live/n2.jpg')" :lenth="'李老师'" :title="'深入浅出Vue'"></live>
-      
-         <live :apidate="require('../../live/n3.jpg')" :lenth="'亮老师'" :title="'数据挖掘基础教程'"></live>
-      
-         <live :apidate="require('../../live/n4.jpg')" :lenth="'亮老师'" :title="'Python开发网络爬虫'"></live>
-      
+          </div>
+           <live :apidate="require('../../live/n2.jpg')" :lenth="'李老师'" :title="'不吹不黑聊聊前端框架'" ></live>
+            <live :apidate="require('../../live/n3.jpg')" :lenth="'朱老师'" :title="'自动化测试工具使用'" ></live>
       </div>
     </div>
         
@@ -199,6 +198,7 @@ export default {
     return {
       userrole: 0,
       searchData: "",
+      liveroom: [],
       imgsrc: require("./user.jpg"),
       userrole: 10,
       BGbasic: "bgbasic",
@@ -225,6 +225,11 @@ export default {
     if (store.state.userdata.role === 20) {
       (this.work = "批改作业"), (this.clas = "发布课件"), (this.userrole = 20);
     }
+    this.$axios.get('http://172.19.210.149:7001/live').then((rooms)=>{
+      console.log(rooms);
+      this.liveroom = rooms.data;
+    })
+    
   },
   methods: {
     gojoin: function(){

@@ -13,7 +13,7 @@ import store from './vuex/'
 import { backAPI } from './components/utils'
 // import VueSocketio from 'vue-socket.io'
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'http://rap2api.taobao.org/app/mock/1162/'
+axios.defaults.baseURL = 'http://172.19.210.149:7001'
 Vue.prototype.$axios = axios
 Vue.prototype.$http = backAPI
 
