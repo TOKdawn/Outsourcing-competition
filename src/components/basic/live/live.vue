@@ -1,24 +1,31 @@
 <template>
-  <div class="live_basic">
+  <div class="live_basic" :style="{height:live_basic_height+'px'}">
+
       <el-dialog width="50%" title="hbase 测试题" :visible.sync="innerVisible" append-to-body>
-						<div>
+		<div>
 		<el-container>
 			<el-main>
 				<div v-for="question in questions">
 					<p>{{question.title}}</p>
+                    <el-radio-group v-model="question.modelname">
+
 					<div v-for="(select, index) in question.selects">
-						<el-radio :v-model=select.modelname :label=index >{{select.answer}}</el-radio>
+						<el-radio :label=index >{{select.answer}}</el-radio>
 					</div>
+                      </el-radio-group>
 				</div>
-                <button>提交</button>
+                  <Button type="info">提交</Button>
 			</el-main>
 		</el-container>
 	</div>
 	</el-dialog>
+
+
+
      <div class="live_bg"></div>
      <div class="live_show">
             <Row>
-                <Col span="18" style="padding:10px"> 
+                <Col :span="left" style="padding:10px"> 
                     <div class="live_play">
                         <div class="left_header">
                             <Row>
@@ -60,8 +67,10 @@
                                 </Col>
                             </Row>
                         </div>
-                        <div class="left_main">
-                            <video id="videoElement" style="width: 878px"></video>
+
+ 
+                        <div class="left_main" >
+                            <video id="videoElement" :style="{width: leftheight+'px'}"></video>
                         </div>   
                         <div class="left_bottem">
                              <Row>
@@ -69,10 +78,10 @@
                                     dsa
                                  </Col>
                                  <Col span="5">
-dasdas
+                                       <Button type="primary" :disabled="textshow" @click="changesmall(false)">变宽</Button>
                                  </Col>
                                  <Col span="11">
-ddd
+                                    <Button type="primary" :disabled="textshow" @click="changesmall(true)">变窄</Button>
                                  </Col>
                                  <Col span="4">
                                  <Button type="primary" :disabled="textshow" @click="innershow">课堂作业</Button>
@@ -82,15 +91,17 @@ ddd
                         </div>
                     </div>
                     </Col>
-                <Col span="6" style="padding:10px 5px">
-                <div class="live_info">
+                <Col :span="right" style="padding:10px 5px">
+
+
+                <div class="live_info" v-show="rihgtshow">
                     <div class="right_header">
                         <h1>教师助理</h1>
                         <img src="./hedda2.png" alt="">
                         <img src="./hdsad3.png" alt="">
                         <img src="./hedda2.png" alt="">
                     </div>
-                    <div class="right_main">
+                    <div class="right_main" >
                         <div class="live_massge">
                             <ul class="live_comments">
                                 <li v-for="comm in comments">
@@ -99,17 +110,20 @@ ddd
                             </ul>
                         </div>
                         <div class="live_comm">
-                            <Row class="comm_buttonBar">
-                                <Col span="4">&nbsp </Col>
-                                <Col span="11">&nbsp</Col>
-                                <Col span="5"> 彩色评论</Col>
+                            <Row class="comm_buttonBar" >
+                                <Col span="7" style="color:#1e88e5;font-size:16px;" > 讨论主题:</Col>
+                                <Col span="16" style="font-size:16px;"> 三大前端主流框架的对比</Col>
+                               
                             </Row>
                                 <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>
                                
                         </div>
-                          <Button type="primary" class="comm_sent" @click="sendMessage()"> 发送</Button>
+                        <span v-show="!show" class="count">剩余讨论时间{{count}} s</span>
+                          <Button type="primary" class="comm_sent" @click="sendMessage()" > 发送</Button>
                     </div>
                 </div>
+
+
 
                 </Col>
             </Row>
@@ -127,11 +141,16 @@ import flvjs from 'flv';
 export default {
   data() {
     return {
+        live_basic_height:950,
+        left:'24',
+        right: '0',
+        leftheight: '1178',
+        count:'',
         client:'',
         user_comment:'',
         textshow: false,
         innerVisible: false,
-    
+    rihgtshow: false,
         live:{
             title: "未命名直播",
             classification: "未知分类",
@@ -145,77 +164,59 @@ export default {
         ],
         radio: '1',
 		questions: [{
-			title: 'Hbase 如何安装',
+            title: 'Hbase 如何安装',
+            modelname: 'radio1',
 			selects: [{
-				modelname: 'radio1',
+			
 				answer: 'linux'
 			},{
-				modelname: 'radio1',
+				
 				answer: 'windows'
 			}]
 		},
 		{
-			title: 'Hbase 如何卸载',
+            title: 'Hbase 如何卸载',
+            modelname: 'radio2',
 			selects: [{
-				modelname: 'radio2',
+				
 				answer: 'linux'
 			},{
-				modelname: 'radio2',
+
+				answer: 'windows'
+			}]
+		},{
+            title: 'Hbase 如何卸载',
+            modelname: 'radio2',
+			selects: [{
+				
+				answer: 'linux'
+			},{
+
+				answer: 'windows'
+			}]
+		},{
+            title: 'Hbase 如何卸载',
+            modelname: 'radio2',
+			selects: [{
+				
+				answer: 'linux'
+			},{
+
+				answer: 'windows'
+			}]
+		},{
+            title: 'Hbase 如何卸载',
+            modelname: 'radio2',
+			selects: [{
+				
+				answer: 'linux'
+			},{
+
 				answer: 'windows'
 			}]
 		},
-		{
-			title: 'hadoop 厉不厉害',
-			selects: [{
-				modelname: 'radio3',
-				answer: 'yes'
-			},{
-				modelname: 'radio3',
-				answer: 'no'
-			},{
-				modelname: 'radio3',
-				answer: 'i don\'t know'
-			}]
-		},
-		{
-			title: 'hadoop 厉不厉害',
-			selects: [{
-				modelname: 'radio3',
-				answer: 'yes'
-			},{
-				modelname: 'radio3',
-				answer: 'no'
-			},{
-				modelname: 'radio3',
-				answer: 'i don\'t know'
-			}]
-		},
-		{
-			title: 'hadoop 厉不厉害',
-			selects: [{
-				modelname: 'radio3',
-				answer: 'yes'
-			},{
-				modelname: 'radio3',
-				answer: 'no'
-			},{
-				modelname: 'radio3',
-				answer: 'i don\'t know'
-			}]
-		},
-		{
-			title: 'hadoop 厉不厉害',
-			selects: [{
-				modelname: 'radio3',
-				answer: 'yes'
-			},{
-				modelname: 'radio3',
-				answer: 'no'
-			},{
-				modelname: 'radio3',
-				answer: 'i don\'t know'
-			}]
-		}]
+		
+		]
         
     }
   },
@@ -228,14 +229,50 @@ export default {
   },
   methods: {
       sendMessage: function(){
+          this.getCode();
            this.comments.push({uname: '你自己' ,utext: this.user_comment});
          this.client.emit('msg',this.user_comment);
          this.user_comment = '';
          
       },
+      changesmall: function(type){
+          if(type){
+              this.rihgtshow = true;
+              this.left=18;
+              this.right=6;
+              this.leftheight=878;
+              this.getCode();
+              this.live_basic_height = 800
+              
+          }else{
+              console.log("ssssss")
+              this.rihgtshow = false;
+               this.left=24;
+              this.right=0;
+              this.leftheight=1178;
+              this.live_basic_height = 950
+              
+          }
+      },
       innershow: function(){
           this.innerVisible=true;
+      }, 
+      getCode: function(){
+     const TIME_COUNT = 180;
+     if (!this.timer) {
+       this.count = TIME_COUNT;
+       this.show = false;
+       this.timer = setInterval(() => {
+       if (this.count > 0 && this.count <= TIME_COUNT) {
+         this.count--;
+        } else {
+         this.show = true;
+         clearInterval(this.timer);
+         this.timer = null;
+        }
+       }, 1000)
       }
+   }  
   },
   created() {
     // Vue.use(VueSocketio, '172.20.171.122:3000');
@@ -292,7 +329,8 @@ export default {
 <style scoped>
 .live_basic{
     background-color: #f2f3f5;
-}
+  animation:all 5s ease-in;
+  }
 .live_bg{
    
     background:url('./bg.webp')  0 0 /100% 100% no-repeat;
@@ -305,7 +343,6 @@ export default {
 }
 .live_show{
     width: 1200px;
-    height: 800px;
     margin:  auto;
     padding-top: 15px 0px;
 }
@@ -333,12 +370,14 @@ export default {
     line-height: 34px;
 }
 .left_main{
-    height: 494px;
-   
+     animation:all 5s ease-in;
 }
 .left_bottem{
     height: 100px;
       padding: 17px 24px 17px 17px;
+      background-color: #fff;
+      border-radius: 0px 0px 10px 10px;
+      margin-top:-5px;
 }
 .live_header_morinfo{
     margin-top: 8px;
@@ -423,5 +462,10 @@ export default {
     text-align: right;
     font-weight: 500;
     cursor: pointer;
+}
+.count{
+    margin:20px 0px 0px 20px;
+    font-size: 14px;
+    color: #23ade5;
 }
 </style>
