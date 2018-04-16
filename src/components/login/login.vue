@@ -24,7 +24,7 @@
             </Input>
         </FormItem>
         <FormItem>
-            <Button type="primary" @click="handleSubmit('formInline')" id="loginbutton">登录</Button>
+            <Button type="primary" @click="student()" id="loginbutton">登录</Button>
         </FormItem>
       </Form>
     </div>
@@ -78,12 +78,24 @@ export default {
                 console.log(this.icoflag)
       },
       student() {
-        let userdata = {
+        if(this.formInline.user == 'dawn'){
+          console.log(this.formInline.user)
+           let userdata = {
           role: 10,
           name: 'dawn',
           accountnum: 15180600303
         }
         store.commit("updata",userdata);
+        }else{
+            let userdata = {
+          role: 10,
+          name: 'shadow',
+          accountnum: 15180600303
+        }
+        store.commit("updata",userdata);
+        }
+       
+       
         this.$router.push("/basic/home")
       },
       teacher() {

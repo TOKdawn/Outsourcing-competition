@@ -38,7 +38,7 @@
       
           联系我们:</br>
           <p>OneBy:<a herf="https://github.com/oneby">&nbsphttps://github.com/oneby</a></br>
-          QQ:&nbsp473187141
+          
 
       </p>
   </el-col>

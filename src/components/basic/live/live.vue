@@ -5,9 +5,9 @@
 		<div>
 		<el-container>
 			<el-main>
-				<div v-for="question in questions">
+				<div v-for="question in questions" >
 					<p>{{question.title}}</p>
-                    <el-radio-group v-model="question.modelname">
+                    <el-radio-group v-model="question.modelname" class="sssadasdas">
 
 					<div v-for="(select, index) in question.selects">
 						<el-radio :label=index >{{select.answer}}</el-radio>
@@ -74,17 +74,12 @@
                         </div>   
                         <div class="left_bottem">
                              <Row>
-                                 <Col span="4">
-                                    dsa
-                                 </Col>
-                                 <Col span="5">
-                                       <Button type="primary" :disabled="textshow" @click="changesmall(false)">变宽</Button>
-                                 </Col>
-                                 <Col span="11">
-                                    <Button type="primary" :disabled="textshow" @click="changesmall(true)">变窄</Button>
+                                 
+                                 <Col span="20">
+                                    &nbsp
                                  </Col>
                                  <Col span="4">
-                                 <Button type="primary" :disabled="textshow" @click="innershow">课堂作业</Button>
+                                 <Button type="primary" :disabled="textshow" @click="innershow" style="margin-top:20px;">课堂作业</Button>
                                  </Col>
                              </Row>
 
@@ -112,7 +107,7 @@
                         <div class="live_comm">
                             <Row class="comm_buttonBar" >
                                 <Col span="7" style="color:#1e88e5;font-size:16px;" > 讨论主题:</Col>
-                                <Col span="16" style="font-size:16px;"> 三大前端主流框架的对比</Col>
+                                <Col span="16" style="font-size:16px;">{{commm}}</Col>
                                
                             </Row>
                                 <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>
@@ -135,7 +130,7 @@ import VueSocketio from 'vue-socket.io';
 import socketio from 'socket.io-client';
 import Vue from 'vue';
 import flvjs from 'flv';
-
+import store from "@/vuex/index.js";
 
 
 export default {
@@ -147,8 +142,9 @@ export default {
         leftheight: '1178',
         count:'',
         client:'',
+        commm: '三大主流框架对比',
         user_comment:'',
-        textshow: false,
+        textshow: true,
         innerVisible: false,
     rihgtshow: false,
         live:{
@@ -277,7 +273,7 @@ export default {
   created() {
     // Vue.use(VueSocketio, '172.20.171.122:3000');
      let _this = this; 
-    this.client =  socketio('ws://172.19.210.149:7001',{query:{room:this.$route.params.id,userID:'甘霖娘'}});
+    this.client =  socketio('ws://172.20.171.118:7001',{query:{room:this.$route.params.id,userID: this.store.state.userdata.name}});
    this.client.on('connect',function(){
     console.log("sucess");
     // this.$socket.emit('join','甘霖娘')
@@ -290,8 +286,17 @@ export default {
     },);
     this.client.on('online', function(val){
         console.log(val);
-        _this.$Message.warning('这是一条警告的提示');
+        _this.$Message.warning('有学生加入');
 
+    });
+    this.clien.on('startquiz',function(num,time){
+        console.log('讨论')
+        this.textshow = false;
+    })
+    this.client.on('startdiscuss' ,function(sub,time){
+          console.log('染发剂开个会股份换股')
+        this.changesmall(true);
+        this.commm = sub;
     })
   },
   components: {},
@@ -317,7 +322,7 @@ export default {
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: `http://172.19.210.149:9090/live/${this.$route.params.id}.flv`
+            url: `http://172.20.171.118:9090/live/${this.$route.params.id}.flv`
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
@@ -467,5 +472,8 @@ export default {
     margin:20px 0px 0px 20px;
     font-size: 14px;
     color: #23ade5;
+}
+.sssadasdas{
+    margin: 5px 0px 10px 0px ;
 }
 </style>

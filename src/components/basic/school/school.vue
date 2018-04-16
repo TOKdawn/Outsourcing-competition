@@ -57,7 +57,7 @@
                         </FormItem>
     
                         <FormItem>
-                            <Button type="primary" @click="handleSubmit('formInline')" id="loginbutton">登录</Button>
+                            <Button type="primary" @click="student()" id="loginbutton">登录</Button>
                         </FormItem>
                     </Form>
                 </div>
@@ -166,6 +166,7 @@
     import store from "@/vuex/index.js";
     import moive from "../../moiv/moiv.vue";
     import training from "../../training/training.vue";
+  
     export default {
         data() {
             return {
@@ -226,15 +227,27 @@
                 this.icoflag = !this.icoflag;
                 console.log(this.icoflag);
             },
-            student() {
-                let userdata = {
-                    role: 10,
-                    name: "dawn",
-                    accountnum: 15180600303
-                };
-                store.commit("updata", userdata);
-                this.$router.push("/")
-            },
+             student() {
+        if(this.formInline.user == 'dawn'){
+          console.log(this.formInline.user)
+           let userdata = {
+          role: 10,
+          name: 'dawn',
+          accountnum: 15180600303
+        }
+        store.commit("updata",userdata);
+        }else{
+            let userdata = {
+          role: 10,
+          name: 'shadow',
+          accountnum: 15180600303
+        }
+        store.commit("updata",userdata);
+        }
+       
+       
+        this.$router.push("/")
+      },
             teacher() {
                 let userdata = {
                     role: 20,
