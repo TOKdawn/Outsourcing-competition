@@ -225,7 +225,7 @@ export default {
     if (store.state.userdata.role === 20) {
       (this.work = "批改作业"), (this.clas = "发布课件"), (this.userrole = 20);
     }
-    this.$axios.get('http://172.20.171.118:7001/live').then((rooms)=>{
+    this.$axios.get('http://172.20.171.122:7001/live').then((rooms)=>{
       console.log(rooms);
       this.liveroom = rooms.data;
     })

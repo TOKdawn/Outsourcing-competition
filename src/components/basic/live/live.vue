@@ -14,7 +14,7 @@
 					</div>
                       </el-radio-group>
 				</div>
-                  <Button type="info">提交</Button>
+                  <Button type="info" @click="dsadas">提交</Button>
 			</el-main>
 		</el-container>
 	</div>
@@ -107,7 +107,7 @@
                         <div class="live_comm">
                             <Row class="comm_buttonBar" >
                                 <Col span="7" style="color:#1e88e5;font-size:16px;" > 讨论主题:</Col>
-                                <Col span="16" style="font-size:16px;">{{commm}}</Col>
+                                <Col span="16" style="font-size:16px; text-align:left;">{{commm}}</Col>
                                
                             </Row>
                                 <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>
@@ -130,7 +130,7 @@ import VueSocketio from 'vue-socket.io';
 import socketio from 'socket.io-client';
 import Vue from 'vue';
 import flvjs from 'flv';
-import store from "@/vuex/index.js";
+import $store from "../../../vuex/index.js";
 
 
 export default {
@@ -225,11 +225,14 @@ export default {
   },
   methods: {
       sendMessage: function(){
-          this.getCode();
+  
            this.comments.push({uname: '你自己' ,utext: this.user_comment});
          this.client.emit('msg',this.user_comment);
          this.user_comment = '';
          
+      },
+      dsadas: function(){
+          this.innerVisible = false;
       },
       changesmall: function(type){
           if(type){
@@ -254,16 +257,19 @@ export default {
           this.innerVisible=true;
       }, 
       getCode: function(){
-     const TIME_COUNT = 180;
+          let _this = this;
+     const TIME_COUNT = 15;
      if (!this.timer) {
        this.count = TIME_COUNT;
-       this.show = false;
+
        this.timer = setInterval(() => {
        if (this.count > 0 && this.count <= TIME_COUNT) {
          this.count--;
         } else {
-         this.show = true;
+     
          clearInterval(this.timer);
+        this.changesmall(false)
+        this.$Message.info('讨论结束', 3);
          this.timer = null;
         }
        }, 1000)
@@ -273,7 +279,7 @@ export default {
   created() {
     // Vue.use(VueSocketio, '172.20.171.122:3000');
      let _this = this; 
-    this.client =  socketio('ws://172.20.171.118:7001',{query:{room:this.$route.params.id,userID: this.store.state.userdata.name}});
+    this.client =  socketio('ws://172.20.171.122:7001',{query:{room:this.$route.params.id,userID:$store.state.userdata.name}});
    this.client.on('connect',function(){
     console.log("sucess");
     // this.$socket.emit('join','甘霖娘')
@@ -289,14 +295,14 @@ export default {
         _this.$Message.warning('有学生加入');
 
     });
-    this.clien.on('startquiz',function(num,time){
+this.client.on('startQuiz',function(num,time){
         console.log('讨论')
-        this.textshow = false;
+        _this.textshow = false;
     })
-    this.client.on('startdiscuss' ,function(sub,time){
+    this.client.on('startDiscuss' ,function(sub,time){
           console.log('染发剂开个会股份换股')
-        this.changesmall(true);
-        this.commm = sub;
+        _this.changesmall(true);
+        _this.commm = sub;
     })
   },
   components: {},
@@ -322,7 +328,7 @@ export default {
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: `http://172.20.171.118:9090/live/${this.$route.params.id}.flv`
+            url: `http://172.20.171.122:9090/live/${this.$route.params.id}.flv`
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();

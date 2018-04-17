@@ -5,7 +5,7 @@ Vue.use(Vuex)
 const state = {
     userdata: {
         'id': '',
-        'name': '',
+        'name': 'nuknow',
         'role': 0,
     }
 }
