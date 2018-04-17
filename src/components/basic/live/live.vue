@@ -108,12 +108,12 @@
                             <Row class="comm_buttonBar" >
                                 <Col span="7" style="color:#1e88e5;font-size:16px;" > 讨论主题:</Col>
                                 <Col span="16" style="font-size:16px; text-align:left;">{{commm}}</Col>
-                               
+                            
                             </Row>
                                 <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>
                                
                         </div>
-                        <span v-show="!show" class="count">剩余讨论时间{{count}} s</span>
+                        <span  class="count">剩余讨论时间{{count}} s</span>
                           <Button type="primary" class="comm_sent" @click="sendMessage()" > 发送</Button>
                     </div>
                 </div>
@@ -258,7 +258,7 @@ export default {
       }, 
       getCode: function(){
           let _this = this;
-     const TIME_COUNT = 15;
+     const TIME_COUNT = 180;
      if (!this.timer) {
        this.count = TIME_COUNT;
 
@@ -303,6 +303,10 @@ this.client.on('startQuiz',function(num,time){
           console.log('染发剂开个会股份换股')
         _this.changesmall(true);
         _this.commm = sub;
+    })
+    this.client.on('pissoff',function(mess){
+         _this.$Message.info('直播结束', 10);
+         _this.client.disconnect();
     })
   },
   components: {},
@@ -429,7 +433,7 @@ this.client.on('startQuiz',function(num,time){
 .live_massge{
     padding: 5px;
     height: 440px;
-    overflow:scroll;
+    
 }
 .live_comments li{
     list-style: none;

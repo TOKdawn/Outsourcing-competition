@@ -7,7 +7,7 @@
         <h1>
           Vue基础入门第一课-----从MVC到MVVM
         </h1>
-          <p>大连东软信息学院 > 精品课程 > 前端技术 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  2018-04-01&nbsp 12:03</p>
+          <p>北京大学 > 精品课程 > 前端技术 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  2018-04-01&nbsp 12:03</p>
         
         <Row style="width:80%">
                   <Col span= "3"><Icon type="play"></Icon>1.3W</Col>

@@ -54,6 +54,9 @@ export default [{
                     component: r => require.ensure([], () => r(require('../components/basic/student/student.vue')), 'student'),
                     redirect: 'student/:id/classonline',
                     children: [{
+                        path: 'wenda',
+                        component: r => require.ensure([], () => r(require('../components/basic/student/wenda/wenda.vue')), 'wenda'),
+                    }, {
                         path: 'classonline',
                         component: r => require.ensure([], () => r(require('../components/basic/student/classonline/classonline.vue')), 'classonline'),
                     }, {

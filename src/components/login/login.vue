@@ -82,14 +82,14 @@ export default {
           console.log(this.formInline.user)
            let userdata = {
           role: 10,
-          name: 'dawn',
+          name: '学生一',
           accountnum: 15180600303
         }
         store.commit("updata",userdata);
         }else{
             let userdata = {
           role: 10,
-          name: 'shadow',
+          name: '学生二',
           accountnum: 15180600303
         }
         store.commit("updata",userdata);

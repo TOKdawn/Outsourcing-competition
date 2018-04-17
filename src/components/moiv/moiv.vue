@@ -23,7 +23,7 @@ export default {
       return{
           moiveDate: {
               status: 'FlieMaker使用指南',
-              lenth: '某某市理工学院'
+              lenth: '某某市理工大学'
           },
           _id: '123333'
           

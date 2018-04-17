@@ -62,7 +62,7 @@
         <Col span="19">
           <div class="vidoe">
       <p>
-        <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">热门视频</span></p>
+        <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">为您推荐</span></p>
       <div class="vidoe_bar">
         <movie :apidate="require('./1.jpg')"></movie>
 
