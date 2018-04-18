@@ -1,0 +1,2 @@
+webpackJsonp([20],{"8xXA":function(e,t){},oOxh:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("\nupwork\n  ")])},staticRenderFns:[]};var i=n("Z0/y")({},r,!1,function(e){n("8xXA")},"data-v-4364e4bd",null);t.default=i.exports}});
+//# sourceMappingURL=upwork.app.js.map

@@ -15,12 +15,7 @@ module.exports = {
     entry: {
         app: './src/main.js'
     },
-    output: {
-        path: config.build.assetsRoot,
-        filename: '[name].js',
-        publicPath: process.env.NODE_ENV === 'production' ?
-            config.build.assetsPublicPath : config.dev.assetsPublicPath
-    },
+    output: { filename: '[name].js', chunkFilename: 'js/[name].app.js', publicPath: '/' },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
