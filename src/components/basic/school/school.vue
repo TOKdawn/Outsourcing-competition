@@ -249,12 +249,11 @@
         this.$router.push("/")
       },
             teacher() {
-                let userdata = {
-                    role: 20,
-                    name: "shaow",
-                    accountnum: 122222222321
-                };
-                store.commit("updata", userdata);
+               location.href="https://oneby.github.io/Admin-Teacher/"
+                
+            },
+            manage(){
+                location.href="https://oneby.github.io/Admin-Platform/"
             }
         },
         components: {
