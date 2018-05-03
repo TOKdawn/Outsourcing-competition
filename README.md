@@ -1,21 +1,12 @@
-# outsouring
 
-> A Vue.js project
+# 服务外包比赛项目
+## 这个东西可厉害了
+vue-router单页面应用,路由拦截,vuex存储,动态路由,flv播放,socket常连接....
 
-## Build Setup
+整体上应该是个直播网站Orz
 
-``` bash
-# install dependencies
-npm install
+[Demo](https://tokdawn.github.io/Outsourcing-competition/) 没后台,所以流程都跑不起来
 
-# serve with hot reload at localhost:8080
-npm run dev
+但是,我们有展示视频QwQ
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+[B站连接](https://www.bilibili.com/video/av22285663)
