@@ -4,50 +4,47 @@ export default [{
     component: App,
     children: [{
             path: '',
-            component: r => require.ensure([], () => r(require('../components/login/login.vue')), 'home')
+            component: r => require.ensure([], () => r(require('../components/basic/home/home.vue')), 'home')
                 // meta: {
                 //     requireAuth: true
                 // }
         },
         {
             path: 'basic',
-            component: r => require.ensure([], () => r(require('../components/basic/home/home.vue')), 'home'),
+            component: r => require.ensure([], () => r(require('../components/basic/basic.vue')), 'basic'),
             meta: {
                 requireAuth: true
             },
-            children: [{
-                    path: 'join',
-                    component: r => require.ensure([], () => r(require('../components/basic/join/join.vue')), 'join')
-                },
-                {
-                    path: 'allschool',
-                    component: r => require.ensure([], () => r(require('../components/basic/allschool/allschool.vue')), 'allschool')
-                },
-                {
-                    path: 'movieshow/:id',
-                    name: 'movieshow',
-                    component: r => require.ensure([], () => r(require('../components/basic/movieshow/movieshow.vue')), 'movieshow')
-                },
-                {
-                    path: 'downwork',
+            children: [
+                // {
+                //     path: 'allschool',
+                //     component: r => require.ensure([], () => r(require('../components/basic/allschool/allschool.vue')), 'allschool')
+                // },
+                // {
+                //     path: 'movieshow/:id',
+                //     name: 'movieshow',
+                //     component: r => require.ensure([], () => r(require('../components/basic/movieshow/movieshow.vue')), 'movieshow')
+                // },
+                // {
+                //     path: 'downwork',
 
-                    component: r => require.ensure([], () => r(require('../components/basic/downwork/downwork')), 'downwork')
+                //     component: r => require.ensure([], () => r(require('../components/basic/downwork/downwork')), 'downwork')
 
-                },
-                {
-                    path: 'upwork',
-                    component: r => require.ensure([], () => r(require('../components/basic/upwork/upwork.vue')), 'upwork')
-                },
-                {
-                    path: 'downclass',
-                    component: r => require.ensure([], () => r(require('../components/basic/downclass/downclass.vue')), 'downclass')
+                // },
+                // {
+                //     path: 'upwork',
+                //     component: r => require.ensure([], () => r(require('../components/basic/upwork/upwork.vue')), 'upwork')
+                // },
+                // {
+                //     path: 'downclass',
+                //     component: r => require.ensure([], () => r(require('../components/basic/downclass/downclass.vue')), 'downclass')
 
-                },
-                {
-                    path: 'searchmov/:scorename',
-                    name: 'score',
-                    component: r => require.ensure([], () => r(require('../components/basic/mov/searchmov.vue')), 'searchmov')
-                },
+                // },
+                // {
+                //     path: 'searchmov/:scorename',
+                //     name: 'score',
+                //     component: r => require.ensure([], () => r(require('../components/basic/mov/searchmov.vue')), 'searchmov')
+                // },
                 {
                     path: 'student/:id',
                     name: 'student',
@@ -97,17 +94,17 @@ export default [{
                     component: r => require.ensure([], () => r(require('../components/basic/live/live.vue')), 'live')
 
                 },
-                {
-                    path: 'login/:schoolId',
-                    name: 'login',
-                    component: r => require.ensure([], () => r(require('../components/basic/school/school.vue')), 'login')
-                }
+                // {
+                //     path: 'login/:schoolId',
+                //     name: 'login',
+                //     component: r => require.ensure([], () => r(require('../components/basic/school/school.vue')), 'login')
+                // }
             ]
 
         },
         {
-            path: 'manage',
-            component: r => require.ensure([], () => r(require('../components/management/management.vue')), 'manage')
+            path: 'login',
+            component: r => require.ensure([], () => r(require('../components/login/login.vue')), 'login')
 
         }
 

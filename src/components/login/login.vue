@@ -58,30 +58,41 @@
 				if (!isCheck) {
 					return;
 				}
-				axios.post('/user/login', {
-					user_num: _this.user_num,
-					user_pwd: _this.user_pwd
-				}).then(result => {
-					if (result.data.code === 0) {
-						let userData = {
-							name: result.data.username,
-							role: result.data.role
-						}
-						// vuex
-						// store.commit("login", userData)
-						// sessionStorage
-						_this.$emit('userSignIn', result.data.username,result.data.role);
-						_this.$router.push("/basic");
-					} else if (result.data.code === -1 || result.data.code === -2) {
-						_this.loginTipMsg = result.data.code === -1 ? "账号未注册!" : "密码错误!";
-						_this.showLoginTip = true;
-						window.setTimeout(function() {
-							_this.showLoginTip = false;
-						}, 5000);
+				// axios.post('/user/login', {
+				// 	user_num: _this.user_num,
+				// 	user_pwd: _this.user_pwd
+				// }).then(result => {
+				// 	if (result.data.code === 0) {
+				// 		let userData = {
+				// 			name: result.data.username,
+				// 			role: result.data.role
+				// 		}
+				// 		// vuex
+				// 		// store.commit("login", userData)
+				// 		// sessionStorage
+				// 		_this.$emit('userSignIn', result.data);
+				// 		_this.$router.push("/");
+				// 	} else if (result.data.code === -1 || result.data.code === -2) {
+				// 		_this.loginTipMsg = result.data.code === -1 ? "账号未注册!" : "密码错误!";
+				// 		_this.showLoginTip = true;
+				// 		window.setTimeout(function() {
+				// 			_this.showLoginTip = false;
+				// 		}, 5000);
+				// 	}
+				// }).catch(err => {
+				// 	console.log(err);
+				// });
+				let result = {
+					data:{
+						accountnum : 123,
+						name : 'dawm',
+						role: 1,
+						img: 'https://avatars2.githubusercontent.com/u/15122564?s=460&v=4'
 					}
-				}).catch(err => {
-					console.log(err);
-				});
+				}
+			
+				store.commit('userSignIn', result.data);
+				this.$router.push("/");
 			},
 			// 输入验证
 			checkEmailAndPwd(email, pwd) {

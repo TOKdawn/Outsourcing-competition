@@ -1,60 +1,58 @@
 <template>
   <div class="home">
     <BackTop></BackTop>
-  
-    <div id="header">
+  <div id="header">
       <el-row :gutter="20">
-        <el-col :span="4">
-          <img src="../../login/logo.png" alt="logo" class="header_logo" @click="backhome">
-  
-        </el-col>
-        <el-col :span="16" class="home_search">
-            <Tooltip content=" " placement="bottom" style="display:inline-block;">
-            <div class="home_client">客户端</div>
-        </Tooltip>
-          <div id="search">
-            <el-input placeholder="请输入内容" v-model="searchData" class="input-with-select">
-              <el-button slot="append" icon="el-icon-search" @click="searchmov"></el-button>
-            </el-input>
-          </div>
-        </el-col>
-        <el-col :span="4">
-          <div :class="[userrole ? 'photo' : 'z_none']" @click="logdown">
-            <img :src="imgsrc" alt="portrait" style="width:100%; cursor：pointer;">
-          </div>
-        </el-col>
-      </el-row>
-    </div>
-    <div class="block">
-  
-      <div class="home_buttonBar">
-        <div></div>
-        <div>首页</div>
+     <el-col :span="4">
+         <img src="../../login/logo.png" alt="logo" class="header_logo" @click="backhome">
+     </el-col>
+    <el-col :span="16">
+
+    <div class="header_buttonBar">
+        <div @click="backhome">首页</div>
         <div>全部院校</div>
-        <div @click="gojoin()">加入我们</div>
-        <div @click="gojoin()">加入企业</div>
+        <div>加入我们</div>
+        <div>加入企业</div>
+      </div>
+
+     <div  id="search">
+  
+     </div>
+
+    </el-col>
+    <el-col :span="4">
+        <div class= 'photo'  @click="logdown">
+            <img :src="imgsrc" alt="portrait" style="width:100%; cursor：pointer;"> 
+        </div>
+    </el-col>
+    </el-row>
+  </div>
+   
+
+   <div class="movie_show">
+      <div class="movie_basic">
+      <div class="movie_play">
+
+      </div>
+      <div class="movie_say">
+        <p>选集</p>
+        <div></div>
+        <div></div>
+        <div></div>
         <div></div>
       </div>
-  
-      <el-carousel height="400px">
-        <el-carousel-item v-for="item in hour" :key="item.class">
-          <div :class="[item.class,BGbasic]"></div>
-        </el-carousel-item>
-      </el-carousel>
-  
-      <div class="home_schoolBar">
-        <p @click="gopath('basic/allschool')">全部合作高校</p>
-        <img src="./school1.png" alt="" @click="gopathToken('123')">
-        <img src="./school2.png" alt="" @click="gopathToken('123')">
-        <img src="./school3.png" alt="" @click="gopathToken('123')">
-        <img src="./school4.png" alt="" @click="gopathToken('123')">
-        <img src="./school5.png" alt="" @click="gopathToken('123')">
+      <div class="movie_butten">
+        <Row>
+          <Col span="8" class="movie_shera"> <p>分享:</p>  <i class="icon iconfont icon-weibo"></i>  <i class="icon iconfont icon-qunfengqqkongjian"></i>       <i class="icon iconfont icon-qq"></i> <i style="font-size:44px; position: absolute;" class="icon iconfont icon-baidu1"></i></Col>
+          <Col span="5" class="movie_star"><Icon type="thumbsup"></Icon> <p>点赞 6032</p> </Col>
+          <Col span="5" class="movie_star"><Icon type="ios-star"></Icon> <p>收藏 3190</p> </Col>
+          <Col span="6" class="movie_phone"><Icon type="android-phone-portrait"></Icon> 手机查看</Col>
+        </Row>
+       </div>
       </div>
-  
-      </el-col>
-      </el-row>
-  
+
     </div>
+   
     <div class="wire"></div>
   
   <div class="home_mainBar">
@@ -150,7 +148,7 @@
         </Col>
         <Col span="5">
           <div class="hot_list">
-            <p>视频排行</p>
+            <p>人气排行</p>
             <ul>
               <li><span>1</span> C语言快速提高</li>
               <li><span>2</span>C++快速提高</li>
@@ -169,20 +167,7 @@
         </Col>
     </Row>
   </div>
-  <div class="training_bg">
-  <div class="home_training">
-      <Row>
-        <Col span="8">
-          <h1>精彩实训</h1>
-          <p>已有233万老师和同学在此发言</p>
-        </Col>
-        <Col span="16">
-          <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'400px'"></training>
-            <training :teacher="'朱老师'" :from="'计算机科学与技术'" :num="23" :title="'混合开发实现在线书城'" :width="'400px'"></training>
-        </Col>
-    </Row>
-  </div>
-  </div>
+  
     <thefooter></thefooter>
   </div>
 </template>
@@ -222,8 +207,11 @@ export default {
   },
   created() {
     this.userrole = store.state.userdata.role;
-    if (store.state.userdata.role === 20) {
-      (this.work = "批改作业"), (this.clas = "发布课件"), (this.userrole = 20);
+    console.log(store.state.userdata)
+    if (store.state.userdata.role === 0) {
+      this.imgsrc = require("./user.jpg")
+    }else{
+      this.imgsrc = store.state.userdata.img;
     }
     this.$axios.get('http://172.20.171.122:7001/live').then((rooms)=>{
       console.log(rooms);
@@ -246,24 +234,31 @@ export default {
     backhome: function() {
       this.$router.push("/");
     },
-    searchmov: function() {
-      console.log("scsc", this.searchData);
-      this.$router.push({
-        name: "score",
-        params: {
-          scorename: this.searchData
-        }
-      });
+     backhome: function(){
+          this.$router.push('/');
+      },
+      searchmov: function(){
+          console.log("scsc",this.searchData)
+           this.$router.push({name: 'score', params: { scorename: this.searchData}})
+      },
+     
+        gojoin: function(){
+      this.$router.push("/basic/join");
     },
     logdown: function() {
-      console.log(store.state.userdata.id);
-      switch (store.state.userdata.role) {
-        case 10:
-          this.$router.push({
-            name: "student",
-            params: { id: store.state.userdata.id }
-          });
-      }
+      console.log(store.state.userdata.role);
+          switch(store.state.userdata.role){
+            case 0:
+               this.$router.push('/login');
+               break;
+             case 1: 
+            case 2:
+            this.$router.push({ name: "student", params: { id: store.state.userdata.id } });
+            break;
+
+          }
+        
+   
     },
     fnwork: function() {
       switch (this.userrole) {
@@ -441,9 +436,9 @@ $--center-width: 1300px;
 
 .wire {
   width: 100%;
-  /* background-color: #8aff7d; */
+ background-color: #f4f7f9; 
   height: 20px;
-  margin-top: 20px;
+ 
   box-shadow: 0px 3px 5px #bfbfbf;
   margin-bottom: 20px;
 }
@@ -714,6 +709,310 @@ $--center-width: 1300px;
   margin-top: 60px;
   font-weight: 600;
 }
+#header{
+    height: 100px;
+    text-align: center;
+    min-width: 1200px;
+    background: #3c3c3c;
+ 
+}
+#search{
+    width: 380px;
+    left: 0;
+    right: 0;
+    height: 60;
+    float: left;
+    margin-top: 30px;
+    background-color: transparent;
+
+}
+.header_logo{
+    height: 70px;
+    margin-top: 15px;
+    margin-left: 0px;
+}
+.photo{
+        display: block;
+    border: 1px solid #fff;
+    border-radius: 300px;
+    width: 80px;
+    height: 80px;
+    margin: 8px auto;
+    position: relative;
+    overflow: hidden;
+    background: #88acdb;
+    -webkit-transition: all .2s ease-in;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    text-align: center;
+    cursor:pointer;
+
+}
+.el-input-group{
+    border-radius: 20px;
+}
+.header_buttonBar{
+    height: 40px;
+    color:#fff;
+    font-size: 22px;
+    font-weight: 550;
+    line-height: 40px;
+    cursor: pointer;
+    width: 400px;
+    float: left;
+    margin-top: 30px;
+}
+.header_buttonBar::after{
+    content: '';
+    float: none;
+    display: block;
+    clear: both;
+}
+.header_buttonBar div{
+    float: left;
+    padding: 0px 10px;
+
+}
+@import "../../../assets/font/iconfont.css";
+.movie_title {
+  margin-bottom: 30px;
+}
+.movie_show {
+  width: 100%;
+  background-color: #f4f7f9;
+  padding-bottom: 30px;
+}
+
+.movie_basic {
+  width: 1200px;
+  margin: auto;
+  padding-top: 20px;
+}
+.movie_user {
+  font-size: 14px;
+}
+.movie_user img {
+  width: 80px;
+  height: 80px;
+}
+.movie_info p {
+  font-size: 15px;
+  padding: 5px 0px 15px 0px;
+}
+.movie_info i {
+  font-size: 15px;
+  padding-right: 5px;
+  color: #888;
+}
+.movie_info {
+  font-size: 14px;
+  cursor: pointer;
+}
+.movie_user div {
+  top: 0px;
+  display: inline-block;
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 5px;
+  
+}
+.movie_user div p {
+  font-size: 18px;
+  font-weight: 700;
+  vertical-align: top;
+}
+.movie_play {
+  background-color: #000;
+  width: 880px;
+  height: 550px;
+  float: left;
+}
+.movie_say{
+ background-color: #fff;
+width: 320px;
+display: inline-block;
+height: 550px;
+box-shadow: 1px 1px 10px #eee;
+overflow: scroll;
+margin-bottom: 20px;
+
+}
+.movie_say p{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px #eee solid;
+  font-size: 20px;
+  line-height: 50px;
+  border-left: #1e88e5 solid 5px;
+  padding-left: 20px;
+  color: #2e7d32;
+  font-weight: 700; 
+  margin-bottom: 10px;
+}
+.movie_say div{
+  width: 95%;
+  height: 40px;
+  margin: 8px auto 5px auto ;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 40px;
+  color: #666;
+  padding: 0px 10px; 
+  cursor: pointer;
+  font-weight: 600;
+
+}
+.movie_butten{
+  border-radius: 5px;
+  width: 100%;
+  margin: auto;
+ 
+  display: block;
+  
+  height: 80px;
+  background: #fff;
+  padding: 6px 20px
+}
+.movie_shera{
+ 
+  font-size: 28px;
+  font-weight: 500;
+  border-right: #eee 1px solid;
+}
+.movie_shera i{
+  font-size: 38px;
+  margin-left: 25px;
+  font-weight: 400;
+line-height: 60px;
+  cursor: pointer;
+  vertical-align: top;
+
+}
+.movie_shera p{
+  width: 65px;
+  display: inline-block;
+  line-height: 64px;
+  height: 64px;
+
+}
+.movie_star{
+  padding-left:  30px;
+  cursor: pointer;
+  
+}
+.movie_star i{
+  font-size: 38px;
+  line-height: 60px;
+  width: 40px;
+  display: inline-block;
+}
+.movie_star p{
+  line-height: 60px;
+  font-size: 24px;
+  width: 150px;
+  display: inline-block;
+  padding-left: 10px;
+  font-weight: 500;
+}
+.movie_phone{
+  border-left:  #eee 1px solid;
+  height: 66px;
+  padding-left: 30px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 66px;
+  cursor: pointer;
+}
+.movie_phone i{
+  font-size: 36px;
+  line-height: 60px;
+  width: 40px;
+  display: inline-block;
+}
+.movie_page{
+  width: 100%;
+  text-align: right;
+  padding: 2px 30px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  border-bottom: 2px #eee solid;
+}
+.comment_head img{
+  margin: 10px 0px;
+  height: 80px;
+  border-radius: 40px;
+}
+.comment_main {
+  margin: 20px 0px 40px 0px;
+  line-height: 24px;
+}
+.comment_enter {
+  margin: 20px 0px 20px 30px;
+  height: 70px;
+}
+.comment_say{
+  border-top:2px #eee solid;
+}
+.comment_head_min img{
+  width: 50px;
+
+}
+.comment_say{
+  padding: 10px 0px;
+}
+.comment_say h1{
+  font-size: 16px;
+  margin-bottom: 5px;
+  
+}
+.comment_say p{
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.comm_info{
+  color: #666;
+  font-weight: 400;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+.comm_info i{
+  font-size: 18px;
+  margin-right: 3px;
+}
+.comment_say_min{
+  padding: 10px 0px 5px 0px;
+}
+.comment_say_min h1{
+display: inline-block;
+width: 110px;
+font-size: 13px;
+}
+.comment_say_min p{
+  display: inline-block;
+
+}
+.dadsad{
+  height: 200px;
+  background-color: #fff;
+  
+}
+.movie_fenye{
+  width: 100%;
+  text-align: center;
+  margin: 20px 0px 30px 0px;
+}
+.movie_showss{
+  width: 100%;
+ margin: 63px 0px 0px 20px;
+ padding: 0px;
+border-top: #eee 1px solid;
+}
 </style>
 <style>
 .home_search .ivu-tooltip-inner {
@@ -722,4 +1021,5 @@ $--center-width: 1300px;
   width: 160px;
   height: 160px;
 }
+
 </style>
