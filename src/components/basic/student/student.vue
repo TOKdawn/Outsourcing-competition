@@ -8,22 +8,10 @@
   <el-container style="min-height: 800px; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
     <el-menu :default-openeds="[]">
-      <el-submenu index="1">
-        <template slot="title"><i class="el-icon-message"></i>我的课程</template>
-          <el-menu-item index="1-1" @click="routerlink(1)">直播课程</el-menu-item>
-          <el-menu-item index="1-2" @click="routerlink(2)">录播课程</el-menu-item>
-      </el-submenu>
-      <el-submenu index="2">
-          <template slot="title"><i class="el-icon-news"></i>我的实训</template>   
-          <el-menu-item index="2-1"  @click="routerlink(3)">实训列表</el-menu-item>
-          <el-menu-item index="2-2"  @click="routerlink(4)">实训讨论</el-menu-item>
-      </el-submenu>
-    
-      <el-menu-item index="3"  @click="routerlink(5)">我的作业</el-menu-item>
-          <el-menu-item index="4"  @click="routerlink(6)">我的成绩</el-menu-item>
-            <el-menu-item index="5"  @click="routerlink(7)">我的收藏</el-menu-item>
-             <el-menu-item index="6"  @click="routerlink(8)">智能问答</el-menu-item>
-            <el-menu-item index="6"  @click="routerlink(9)">我的信息</el-menu-item>
+          <el-menu-item index="1" @click="routerlink(1)" :class="{'student_nushow' : flag[0]}">我的信息</el-menu-item>
+          <el-menu-item index="2" @click="routerlink(2) " :class="{'student_nushow' : flag[1]}">观看记录</el-menu-item>
+          <el-menu-item index="3"  @click="routerlink(3)" :class="{'student_nushow' : flag[2]}">我的直播间</el-menu-item>
+            <el-menu-item index="7"  @click="routerlink(4)" :class="{'student_nushow': flag[3]}">我的收藏</el-menu-item>    
     </el-menu>
   </el-aside>
   <el-container>
@@ -36,7 +24,13 @@
 </div>
 </template>
 <script>
+import store from "../../../vuex/index";
 export default {
+    data(){
+        return{
+            flag:[0,0,0,0]
+        }
+    },
   component: {},
   methods: {
      routerlink: function(puth){
@@ -61,12 +55,24 @@ export default {
                 break;
              case 7: 
                 this.$router.push("shoucang");
-                break;
+             break;
                 case 8: 
-                this.$router.push("wenda");
+            this.$router.push("wenda");
                 break;
          }
       },
+  },
+  created(){
+       console.log( store.state.userdata.role);
+            switch(store.state.userdata.role){
+                case 1:
+                    this.flag = [0,0,1,0]
+                    console.log(this.flag)
+                    break;
+                case 2:
+                    this.flag = [0,0,0,0];
+                    break;
+            }
   }
 };
 </script>
@@ -95,6 +101,9 @@ export default {
      margin: 70px 0px 0px 55px;
      font-weight: 800;
      color: #fff;
+ }
+ .student_nushow{
+     display: none;
  }
 
 </style>

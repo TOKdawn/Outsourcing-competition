@@ -217,7 +217,6 @@ export default {
       console.log(rooms);
       this.liveroom = rooms.data;
     })
-    
   },
   methods: {
     gojoin: function(){
@@ -248,11 +247,11 @@ export default {
     logdown: function() {
       console.log(store.state.userdata.role);
           switch(store.state.userdata.role){
-            case 0:
+            case -1:
                this.$router.push('/login');
                break;
-             case 1: 
-            case 2:
+             case 0: 
+            case 1:
             this.$router.push({ name: "student", params: { id: store.state.userdata.id } });
             break;
 
@@ -260,26 +259,7 @@ export default {
         
    
     },
-    fnwork: function() {
-      switch (this.userrole) {
-        case 20:
-          this.$router.push("/basic/upwork");
-          break;
-        case 10:
-          this.$router.push("/basic/downwork");
-          break;
-      }
-    },
-    fnclas: function() {
-      switch (this.userrole) {
-        case 20:
-          this.$router.push("/basic/upclass");
-          break;
-        case 10:
-          this.$router.push("/basic/downclass");
-          break;
-      }
-    },
+ 
     watchmov: function() {
       this.$router.push({
         name: "score",

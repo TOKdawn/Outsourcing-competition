@@ -6,7 +6,7 @@ const state = {
     userdata: {
         'id': '',
         'name': 'nuknow',
-        'role': 0,
+        'role': -1,
         'img': '',
     }
 }

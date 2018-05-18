@@ -90,7 +90,6 @@
 						img: 'https://avatars2.githubusercontent.com/u/15122564?s=460&v=4'
 					}
 				}
-			
 				store.commit('userSignIn', result.data);
 				this.$router.push("/");
 			},
