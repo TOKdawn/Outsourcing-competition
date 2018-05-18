@@ -1,212 +1,250 @@
 <template>
-    <div id="login">
-         <img src="./logo.png" class="home_logo">
-         <p class="infor">分享改变世界,编程构建未来</p>
-
-          <div class="logBar">
-        <a @click="changeicoflag()">你是?</a>
-        <div id="logicon" :class="{icomove:icoflag}">
-       <div class="icobar" @click="student()"><Icon type="person"> </Icon>学生</div>
-       <div class="icobar" @click="teacher()"><Icon type="university"> </Icon>教师</div>
-       <div class="icobar" @click="manage()"><Icon type="person-stalker"> </Icon>管理员</div>
-        </div>
-      </div>
-
-
-
-      <Form ref="formInline" :model="formInline" :rules="ruleInline" inline id="logform">
-        <FormItem prop="user">
-            <Input type="text" v-model="formInline.user" placeholder="用户名">    
-            </Input>
-        </FormItem>
-        <FormItem prop="password" id="loginform">
-            <Input type="password" v-model="formInline.password" placeholder="密码"> 
-            </Input>
-        </FormItem>
-        <FormItem>
-            <Button type="primary" @click="student()" id="loginbutton">登录</Button>
-        </FormItem>
-      </Form>
-    </div>
+	<div class="login-container">
+		<div class="login-bg">
+			<div class="login-box clear">
+				<div class="aside fl">
+					<h3 class="title">
+						<p>直播后台管理系统</p>
+					</h3>
+				</div>
+				<div class="content fl">
+					<div class="form-wrap">
+						<div class="type">
+							<span>登录到后台</span>
+						</div>
+						<div>
+							<div class="input-item">
+								<input placeholder="账号" v-model="user_num">
+								<i class="icon-envelope-alt"></i>
+							</div>
+							<div class="input-item">
+								<input v-if="!isShowPwd" type="password" placeholder="密码" v-model="user_pwd" @keyup.enter="btnLogin">
+								<input v-else type="text" placeholder="密码" v-model="user_pwd" @keyup.enter="btnLogin">
+								<i :class="[isShowPwd ? 'el-icon-star-off':'el-icon-star-on']" @click.stop="showPassword"></i>
+							</div>
+							<div>
+								<el-button round @click.stop="btnLogin">登录</el-button>
+							</div>
+						</div>
+						<p class="errmsg" v-if='loginTipMsg.length > 0'>{{ loginTipMsg }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
-<script type="text/ecmascript-6">
-import store from "@/vuex/index.js";
-export default {
-  data() {
-    return {
-      icoflag: false,
-      formInline: {
-        user: "",
-        password: ""
-      },
-      ruleInline: {
-        user: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-        password: [
-          { required: true, message: "请输入密码", trigger: "blur" },
-          { type: "string", min: 2, message: "密码最小六位", trigger: "blur" }
-        ]
-      }
-    };
-  },
-  methods: {
-    handleSubmit(name) {
-      let _this = this;
 
-      this.$axios
-        .post("/user/login", {
-          loginNum: this.formInline.user,
-          loginPsd: this.formInline.password
-        })
-        .then(function(response) {
-          console.log(response.data.role);
-          if (response.data.role !== 30 ) {
-            var userData = {
-              role: parseInt(response.data.role),
-              name: response.data.name
-            };
-            store.commit("updata", userData);
-            console.log("rouke")
-            _this.$router.push("/basic/home");
-          }
-        })
-        .catch(function(error) {
-          console.log("请求失败");
-        });
-    },
-     changeicoflag() {
-                this.icoflag = !this.icoflag
-                console.log(this.icoflag)
-      },
-      student() {
-        if(this.formInline.user == 'dawn'){
-          console.log(this.formInline.user)
-           let userdata = {
-          role: 10,
-          name: '学生一',
-          accountnum: 15180600303
-        }
-        store.commit("updata",userdata);
-        }else{
-            let userdata = {
-          role: 10,
-          name: '学生二',
-          accountnum: 15180600303
-        }
-        store.commit("updata",userdata);
-        }
-       
-       
-        this.$router.push("/basic/home")
-      },
-      teacher() {
-        let userdata = {
-          role: 20,
-          name: 'shaow',
-          accountnum: 122222222321
-        }
-        store.commit('updata', userdata);
-        this.$router.push("/basic/home")
-      }
-  }
-};
+<script>
+	import store from '../../vuex/index.js'
+	import axios from "axios";
+	export default {
+		name: "VLOGIN",
+		data() {
+			return {
+				user_num: "",
+				user_pwd: "",
+				isShowPwd: false,
+				loginTipMsg: "",
+			};
+		},
+		methods: {
+			showPassword() {
+				this.isShowPwd = !this.isShowPwd;
+			},
+			// 登录
+			btnLogin() {
+				const _this = this
+				let isCheck = _this.checkEmailAndPwd(_this.user_num, _this.user_pwd);
+				if (!isCheck) {
+					return;
+				}
+				axios.post('/user/login', {
+					user_num: _this.user_num,
+					user_pwd: _this.user_pwd
+				}).then(result => {
+					if (result.data.code === 0) {
+						let userData = {
+							name: result.data.username,
+							role: result.data.role
+						}
+						// vuex
+						// store.commit("login", userData)
+						// sessionStorage
+						_this.$emit('userSignIn', result.data.username,result.data.role);
+						_this.$router.push("/basic");
+					} else if (result.data.code === -1 || result.data.code === -2) {
+						_this.loginTipMsg = result.data.code === -1 ? "账号未注册!" : "密码错误!";
+						_this.showLoginTip = true;
+						window.setTimeout(function() {
+							_this.showLoginTip = false;
+						}, 5000);
+					}
+				}).catch(err => {
+					console.log(err);
+				});
+			},
+			// 输入验证
+			checkEmailAndPwd(email, pwd) {
+				if (email === "" || pwd === "") {
+					this.loginTipMsg = "账号及密码不能为空！";
+					return false;
+				} else {
+					this.loginTipMsg = "";
+					return true;
+				}
+			}
+		}
+	};
 </script>
-<style lang="scss">
 
-$--login-width: 256px;
-#login {
-  width: 500px;
-  margin: auto;
-  text-align: center;
-  left: 0;
-  right: 0;
-
-  display: block;
-}
-.home_logo {
-  width: 200px;
-  margin-top: 100px;
-}
-@keyframes icomove {
-  0% {
-    -webkit-transform: translate(-5px, 0);
-    transform: translate(-5px, 0px);
-    color: rgba(188, 188, 188, 0);
-  }
-
-  100% {
-    -webkit-transform: translate(0px, 0px);
-    transform: translate(0px, 0px);
-    clear: rgba(188, 188, 188, 0.8);
-  }
-}
-.ziconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-}
-#loginform div input {
-  width: $--login-width;
-  
-}
-#logform{
-  margin-top: 20px;
-}
-#loginbutton {
-  width: $--login-width;
-  font-size: 15px;
-}
-.ivu-input {
-  width: $--login-width;
-}
-.logBar {
-  
-  text-align: left;
-  width: $--login-width;
-  vertical-align: top;
-  line-height: 24px;
-  left: 0;
-  right: 0;
-  width: 250px;
-  margin: 20px auto 0px auto;
-}
-.logBar a {
-  display: inline-block;
-  color: #888;
-  font-size: 14px;
-  line-height: 24px;
-}
-.logBar a:hover {
-  color: #666;
-}
-#logicon {
-  //    -webkit-transform: translate(-10px,0);
-  //      transform: translate(-10px, 0px);
-  //     color:rgba(117,117,117,0);
-  display: none;
-  margin-left: 5px;
-  line-height: 28px;
-  vertical-align: top;
-  color: #888;
-  letter-spacing: 3px;
-  font-size: 15px;
-
-}
-.icobar{
-  display: inline-block;
-}
-.icomove {
-  animation: icomove 1s;
-  -webkit-animation: icomove 1s;
-  display: inline-block !important;
-}
-#logicon i:hover {
-  color: #666;
-}
-.infor{
-  margin-top: 20px;
-  color:#666;
-  font-size: 18px;
-  text-align: center;
-}
+<style lang="scss" scoped>
+	html,
+	body,
+	ul,
+	ol {
+		padding: 0;
+		margin: 0;
+	}
+	html {
+		font-size: 62.5%;
+	}
+	body {
+		min-height: 100%;
+		height: 100%;
+		overflow-y: auto;
+	}
+	.layout {
+		bottom: 0;
+		position: relative;
+		height: 100%;
+		min-height: 100%;
+		padding-top: 6rem;
+	}
+	::-webkit-scrollbar {
+		display: none;
+	}
+	/*变量 begin*/
+	// 字体
+	$base-font-size: 100% !default;
+	$base-line-height: 2;
+	$font-size-xs: 1.2rem !default;
+	$font-size-sm: 1.4rem !default;
+	$font-size-default: 1.6rem !default;
+	$font-size-lg: 1.8rem !default;
+	$font-size-xl: 2rem !default;
+	$font-size-xxl: 2.4rem !default; // 颜色
+	$color-black: #101213;
+	$color-light-black: #31383e;
+	$color-gray: #a9afb2;
+	$color-light-gray: #d3d4d8;
+	$color-blue: #018fe5;
+	$line-color: #e1e1e1;
+	$color-orange: #e56c69;
+	$color-red: #ff0000;
+	$bg-gray: #f0f0f2;
+	$bg-yellow: #fdf9cd;
+	/*变量 end*/
+	a {
+		text-decoration: none;
+	}
+	/*浮动 begin*/
+	.clear::after {
+		clear: both;
+		content: '';
+		zoom: 1;
+	}
+	.fl {
+		float: left;
+	}
+	.fr {
+		float: right;
+	}
+	// 界面样式
+	.login-container {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		.login-bg {
+			background-color: rgba(39, 65, 82, 0.8);
+			height: 100%;
+			.login-box {
+				width: 70rem;
+				height: 35rem;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				background: #fff;
+				border-radius: .4rem;
+				overflow: hidden;
+				box-shadow: 0.3rem 0.3rem 1rem 0 #333;
+				.aside {
+					width: 30rem; // background: rgba(255, 255, 255, 0.473);
+					background: #018fe5;
+					height: 100%;
+					text-align: center;
+					color: #fff;
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-orient: vertical;
+					-webkit-box-direction: normal;
+					-ms-flex-direction: column;
+					flex-direction: column;
+					-webkit-box-pack: center;
+					-ms-flex-pack: center;
+					justify-content: center;
+					.title {
+						img {
+							height: 100%;
+							width: 98%
+						}
+					}
+				}
+				.content {
+					height: 70%;
+					padding: 6rem;
+					.form-wrap {
+						margin: 10% 0;
+					}
+					.type {
+						margin-bottom: 3rem;
+						font-size: 1.6rem;
+						cursor: pointer;
+						padding: 0 5px;
+						color: #a9afb2;
+					}
+					.active {
+						color: $color-blue;
+					}
+					span {
+						padding: 0 5px;
+					}
+					.input-item {
+						margin-bottom: 2rem;
+						width: 25rem;
+						position: relative;
+					}
+					input {
+						border: none;
+						border-bottom: 1px solid #eee;
+						padding: 10px;
+						width: 100%;
+					}
+					i {
+						position: absolute;
+						right: 0;
+						top: 10px;
+					}
+				}
+			}
+		}
+		.errmsg {
+			font-size: '12px';
+			color: $color-red;
+		}
+	}
 </style>

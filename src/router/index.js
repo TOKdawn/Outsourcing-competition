@@ -4,14 +4,14 @@ export default [{
     component: App,
     children: [{
             path: '',
-            component: r => require.ensure([], () => r(require('../components/basic/home/home.vue')), 'home')
+            component: r => require.ensure([], () => r(require('../components/login/login.vue')), 'home')
                 // meta: {
                 //     requireAuth: true
                 // }
         },
         {
             path: 'basic',
-            component: r => require.ensure([], () => r(require('../components/basic/basic.vue')), 'basic'),
+            component: r => require.ensure([], () => r(require('../components/basic/home/home.vue')), 'home'),
             meta: {
                 requireAuth: true
             },

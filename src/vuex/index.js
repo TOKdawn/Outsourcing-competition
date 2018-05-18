@@ -10,7 +10,7 @@ const state = {
     }
 }
 const mutations = {
-    updata(state, userData) {
+    userSignIn(state, userData) {
         state.userdata.id = userData.accountnum
         state.userdata.name = userData.name
         state.userdata.role = userData.role
