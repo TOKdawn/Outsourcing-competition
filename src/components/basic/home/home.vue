@@ -32,7 +32,7 @@
    <div class="movie_show">
       <div class="movie_basic">
       <div class="movie_play">
- <video id="videoElement" style="width:100%;height:100%"></video>
+ <video id="videoElement" style="width:100%;height:100%" controls="controls"></video>
       </div>
       <div class="movie_say">
         <p>更多直播</p>
@@ -173,6 +173,7 @@ import thefooter from "../footer/footer";
 import movie from "../../moiv/moiv.vue";
 import training from "../../training/training.vue";
 import live from "../../live/livecomp.vue";
+import flvjs from 'flv';
 export default {
   data() {
     return {
@@ -219,7 +220,7 @@ export default {
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: `http://172.20.171.122:9090/live/${this.$route.params.id}.flv`
+            url: `http://hdl1201.plures.net/onlive/c4bfcc1d712845e486cc19fd4c20135d.flv?txSecret=0c5e5b796f323a84a32667b52cfeb9d4&txTime=5b039a49`
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();

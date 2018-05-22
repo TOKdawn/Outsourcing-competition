@@ -69,19 +69,11 @@
                         </div>
 
  
-                        <div class="left_main" >
-                            <video id="videoElement" :style="{width: leftheight+'px'}"></video>
+                        <div class="left_main"   style="background-color:#000;">
+                            <video id="videoElement" :style="{width: leftheight+'px'}" controls="controls"></video>
                         </div>   
                         <div class="left_bottem">
-                             <Row>
-                                 
-                                 <Col span="20">
-                                    &nbsp
-                                 </Col>
-                                 <Col span="4">
-                                 <Button type="primary" :disabled="textshow" @click="innershow" style="margin-top:20px;">课堂作业</Button>
-                                 </Col>
-                             </Row>
+    
 
                         </div>
                     </div>
@@ -106,8 +98,8 @@
                         </div>
                         <div class="live_comm">
                             <Row class="comm_buttonBar" >
-                                <Col span="7" style="color:#1e88e5;font-size:16px;" > 讨论主题:</Col>
-                                <Col span="16" style="font-size:16px; text-align:left;">{{commm}}</Col>
+                                <!-- <Col span="7" style="color:#1e88e5;font-size:16px;" > 讨论主题:</Col> -->
+                                <!-- <Col span="16" style="font-size:16px; text-align:left;">{{commm}}</Col> -->
                             
                             </Row>
                                 <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>
@@ -390,11 +382,12 @@ this.client.on('startQuiz',function(num,time){
      animation:all 5s ease-in;
 }
 .left_bottem{
-    height: 100px;
+    height: 157px;
       padding: 17px 24px 17px 17px;
       background-color: #fff;
       border-radius: 0px 0px 10px 10px;
       margin-top:-5px;
+      /* background: url("https://i0.hdslb.com/bfs/live/32a76bcbe4e5751322d1b3c3165429cfafc1af5e.jpg"); */
 }
 .live_header_morinfo{
     margin-top: 8px;
