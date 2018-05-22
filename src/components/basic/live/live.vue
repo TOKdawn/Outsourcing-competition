@@ -136,17 +136,17 @@ import $store from "../../../vuex/index.js";
 export default {
   data() {
     return {
-        live_basic_height:950,
-        left:'24',
-        right: '0',
-        leftheight: '1178',
+        live_basic_height:800,
+        left:'18',
+        right: '6',
+        leftheight: '878',
         count:'',
         client:'',
         commm: '三大主流框架对比',
         user_comment:'',
         textshow: true,
         innerVisible: false,
-    rihgtshow: false,
+        rihgtshow: true,
         live:{
             title: "未命名直播",
             classification: "未知分类",
@@ -301,7 +301,7 @@ this.client.on('startQuiz',function(num,time){
     })
     this.client.on('startDiscuss' ,function(sub,time){
           console.log('染发剂开个会股份换股')
-        _this.changesmall(true);
+        // _this.changesmall(true);
         _this.commm = sub;
     })
     this.client.on('pissoff',function(mess){
@@ -328,6 +328,7 @@ this.client.on('startQuiz',function(num,time){
 
 //   },
   mounted(){
+   
     if (flvjs.isSupported()) {
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
@@ -338,7 +339,8 @@ this.client.on('startQuiz',function(num,time){
         flvPlayer.load();
         flvPlayer.play();
     }
-  }
+  },
+ 
 };
 </script>
 <style scoped>

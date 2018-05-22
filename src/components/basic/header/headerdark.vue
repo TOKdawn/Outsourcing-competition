@@ -21,7 +21,7 @@
 
     </el-col>
     <el-col :span="4">
-        <div :class="[userrole ? 'photo' : 'z_none']"  @click="logdown">
+       <div class= 'photo'  @click="logdown">
             <img :src="imgsrc" alt="portrait" style="width:100%; cursor：pointer;"> 
         </div>
     </el-col>
@@ -56,6 +56,11 @@ export default {
   },
   created(){
       this.userrole = store.state.userdata.role;
+       if (store.state.userdata.role === 0) {
+      this.imgsrc = require("./user.jpg")
+    }else{
+      this.imgsrc = store.state.userdata.img;
+    }
   }
 }
 </script>

@@ -13,7 +13,7 @@ import store from './vuex/'
 import { backAPI } from './components/utils'
 // import VueSocketio from 'vue-socket.io'
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'http://172.19.210.149:7001'
+axios.defaults.baseURL = 'http://192.168.1.79:7001/api'
 Vue.prototype.$axios = axios
 Vue.prototype.$http = backAPI
 

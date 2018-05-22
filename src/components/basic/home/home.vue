@@ -35,11 +35,11 @@
 
       </div>
       <div class="movie_say">
-        <p>选集</p>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <p>更多直播</p>
+        <div> <img src="./1.jpg"> </div>
+        <div><img src="./4.jpg"></div>
+        <div><img src="./3.jpg"></div>
+      
       </div>
       <div class="movie_butten">
         <Row>
@@ -60,7 +60,7 @@
         <Col span="19">
           <div class="vidoe">
       <p>
-        <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">为您推荐</span></p>
+        <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">录播回看</span></p>
       <div class="vidoe_bar">
         <movie :apidate="require('./1.jpg')"></movie>
 
@@ -98,7 +98,6 @@
                 <Icon style="font-size:14px" type="chatbubble-working"></Icon>&nbsp99+</div>
               <div>
                 <Icon style="font-size:14px" type="eye"></Icon>&nbsp23</div>
-  
               <div>
                 <Icon style="font-size:14px" type="ios-heart"></Icon>&nbsp87</div>
             </div>
@@ -124,8 +123,6 @@
             </div>
           </div>
         </el-card>
-  
-  
       </div>
     </div>
 
@@ -135,10 +132,8 @@
         <Icon type="speakerphone"></Icon>&nbsp<span style="color:#000;">正在直播</span></p>
 
       <div class="vidoe_bar">
-    
           <div v-for=" tiem in liveroom" key="tiem.roomID">
             <live :apidate="require('../../live/n4.jpg')" :lenth="'李老师'" :title="tiem.title" :roomID="tiem.roomID"></live>
-      
           </div>
            <live :apidate="require('../../live/n2.jpg')" :lenth="'李老师'" :title="'不吹不黑聊聊前端框架'" ></live>
             <live :apidate="require('../../live/n3.jpg')" :lenth="'朱老师'" :title="'自动化测试工具使用'" ></live>
@@ -254,10 +249,7 @@ export default {
             case 1:
             this.$router.push({ name: "student", params: { id: store.state.userdata.id } });
             break;
-
           }
-        
-   
     },
  
     watchmov: function() {
@@ -833,17 +825,20 @@ margin-bottom: 20px;
 }
 .movie_say div{
   width: 95%;
-  height: 40px;
+  height: 155px;
   margin: 8px auto 5px auto ;
   background-color: #f6f6f6;
-  border-radius: 5px;
+
   font-size: 14px;
   line-height: 40px;
   color: #666;
-  padding: 0px 10px; 
   cursor: pointer;
   font-weight: 600;
+}
 
+.movie_say img{
+  width: 100%;
+  height: 155px;
 }
 .movie_butten{
   border-radius: 5px;
