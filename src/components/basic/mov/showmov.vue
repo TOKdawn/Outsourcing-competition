@@ -170,11 +170,6 @@
               </Col>  
             </Row>  
 
-
-
-
-
-
             <Row >
               <Col span="4" class="comment_head"> <img src="./hedda2.png" alt=""></Col>
               <Col  span="20" class="comment_say"> 
@@ -187,8 +182,6 @@
                   <Col span="2"> <Icon type="thumbsdown"></Icon></Col>
                   <Col span="5"> 回复</Col>
                 </Row>
-                       
-
               </Col>  
             </Row>  
 
@@ -342,7 +335,6 @@ export default {
   position: absolute;
   padding-top: 10px;
   padding-left: 5px;
-  
 }
 .movie_user div p {
   font-size: 18px;
@@ -355,17 +347,16 @@ export default {
   height: 550px;
   float: left;
 }
-.movie_say{
- background-color: #fff;
-width: 320px;
-display: inline-block;
-height: 550px;
-box-shadow: 1px 1px 10px #eee;
-overflow: scroll;
-margin-bottom: 20px;
-
+.movie_say {
+  background-color: #fff;
+  width: 320px;
+  display: inline-block;
+  height: 550px;
+  box-shadow: 1px 1px 10px #eee;
+  overflow: scroll;
+  margin-bottom: 20px;
 }
-.movie_say p{
+.movie_say p {
   width: 100%;
   height: 50px;
   border-bottom: 1px #eee solid;
@@ -374,68 +365,63 @@ margin-bottom: 20px;
   border-left: #1e88e5 solid 5px;
   padding-left: 20px;
   color: #2e7d32;
-  font-weight: 700; 
+  font-weight: 700;
   margin-bottom: 10px;
 }
-.movie_say div{
+.movie_say div {
   width: 95%;
   height: 40px;
-  margin: 8px auto 5px auto ;
+  margin: 8px auto 5px auto;
   background-color: #f6f6f6;
   border-radius: 5px;
   font-size: 14px;
   line-height: 40px;
   color: #666;
-  padding: 0px 10px; 
+  padding: 0px 10px;
   cursor: pointer;
   font-weight: 600;
-
 }
-.movie_butten{
+.movie_butten {
   border-radius: 5px;
   width: 100%;
   margin: auto;
- 
+
   display: block;
-  
+
   height: 80px;
   background: #fff;
-  padding: 6px 20px
+  padding: 6px 20px;
 }
-.movie_shera{
- 
+.movie_shera {
   font-size: 28px;
   font-weight: 500;
   border-right: #eee 1px solid;
 }
-.movie_shera i{
+.movie_shera i {
   font-size: 38px;
   margin-left: 25px;
   font-weight: 400;
-line-height: 60px;
+  line-height: 60px;
   cursor: pointer;
   vertical-align: top;
-
 }
-.movie_shera p{
+.movie_shera p {
   width: 65px;
   display: inline-block;
   line-height: 64px;
   height: 64px;
-
 }
-.movie_star{
-  padding-left:  30px;
+.movie_star {
+  padding-left: 30px;
   cursor: pointer;
-  
 }
-.movie_star i{
+.movie_star i {
   font-size: 38px;
   line-height: 60px;
   width: 40px;
   display: inline-block;
 }
-.movie_star p{
+.movie_star p {
   line-height: 60px;
   font-size: 24px;
   width: 150px;
@@ -443,8 +429,8 @@ line-height: 60px;
   padding-left: 10px;
   font-weight: 500;
 }
-.movie_phone{
-  border-left:  #eee 1px solid;
+.movie_phone {
+  border-left: #eee 1px solid;
   height: 66px;
   padding-left: 30px;
   font-size: 24px;
@@ -452,13 +438,13 @@ line-height: 60px;
   line-height: 66px;
   cursor: pointer;
 }
-.movie_phone i{
+.movie_phone i {
   font-size: 36px;
   line-height: 60px;
   width: 40px;
   display: inline-block;
 }
-.movie_page{
+.movie_page {
   width: 100%;
   text-align: right;
   padding: 2px 30px;
@@ -467,7 +453,7 @@ line-height: 60px;
   font-weight: 500;
   border-bottom: 2px #eee solid;
 }
-.comment_head img{
+.comment_head img {
   margin: 10px 0px;
   height: 80px;
   border-radius: 40px;
@@ -480,63 +466,59 @@ line-height: 60px;
   margin: 20px 0px 20px 30px;
   height: 70px;
 }
-.comment_say{
-  border-top:2px #eee solid;
+.comment_say {
+  border-top: 2px #eee solid;
 }
-.comment_head_min img{
+.comment_head_min img {
   width: 50px;
-
 }
-.comment_say{
+.comment_say {
   padding: 10px 0px;
 }
-.comment_say h1{
+.comment_say h1 {
   font-size: 16px;
   margin-bottom: 5px;
-  
 }
-.comment_say p{
+.comment_say p {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 10px;
 }
-.comm_info{
+.comm_info {
   color: #666;
   font-weight: 400;
   font-size: 13px;
   cursor: pointer;
   margin-bottom: 6px;
 }
-.comm_info i{
+.comm_info i {
   font-size: 18px;
   margin-right: 3px;
 }
-.comment_say_min{
+.comment_say_min {
   padding: 10px 0px 5px 0px;
 }
-.comment_say_min h1{
-display: inline-block;
-width: 110px;
-font-size: 13px;
-}
-.comment_say_min p{
+.comment_say_min h1 {
   display: inline-block;
-
+  width: 110px;
+  font-size: 13px;
 }
-.dadsad{
+.comment_say_min p {
+  display: inline-block;
+}
+.dadsad {
   height: 200px;
   background-color: #fff;
-  
 }
-.movie_fenye{
+.movie_fenye {
   width: 100%;
   text-align: center;
   margin: 20px 0px 30px 0px;
 }
-.movie_showss{
+.movie_showss {
   width: 100%;
- margin: 63px 0px 0px 20px;
- padding: 0px;
-border-top: #eee 1px solid;
+  margin: 63px 0px 0px 20px;
+  padding: 0px;
+  border-top: #eee 1px solid;
 }
 </style>

@@ -32,7 +32,7 @@
    <div class="movie_show">
       <div class="movie_basic">
       <div class="movie_play">
-
+ <video id="videoElement" style="width:100%;height:100%"></video>
       </div>
       <div class="movie_say">
         <p>更多直播</p>
@@ -212,6 +212,19 @@ export default {
       console.log(rooms);
       this.liveroom = rooms.data;
     })
+  },
+    mounted(){
+   
+    if (flvjs.isSupported()) {
+        var videoElement = document.getElementById('videoElement');
+        var flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+            url: `http://172.20.171.122:9090/live/${this.$route.params.id}.flv`
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+    }
   },
   methods: {
     gojoin: function(){
