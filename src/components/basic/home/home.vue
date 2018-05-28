@@ -19,9 +19,13 @@
           </div>
         </el-col>
         <el-col :span="4">
-          <div :class="[userrole ? 'photo' : 'z_none']" @click="logdown">
+          <div  :class="[userrole ? 'canshow' : 'z_none']">
+            <p class="logout" @click = "logout">注销</p>
+              <div  class ="photo" @click="logdown">
             <img :src="imgsrc" alt="portrait" style="width:100%; cursor：pointer;">
           </div>
+          </div>
+         
         </el-col>
       </el-row>
     </div>
@@ -193,9 +197,11 @@ import thefooter from "../footer/footer";
 import movie from "../../moiv/moiv.vue";
 import training from "../../training/training.vue";
 import live from "../../live/livecomp.vue";
+import $store from "../../../vuex/index.js";
 export default {
   data() {
     return {
+      canshow: 'canshow',
       userrole: 0,
       searchData: "",
       liveroom: [],
@@ -217,7 +223,8 @@ export default {
         }
       ],
       work: "提交作业",
-      clas: "下载课件"
+      clas: "下载课件",
+   
     }
   },
   created() {
@@ -225,7 +232,7 @@ export default {
     if (store.state.userdata.role === 20) {
       (this.work = "批改作业"), (this.clas = "发布课件"), (this.userrole = 20);
     }
-    this.$axios.get('http://172.20.171.122:7001/live').then((rooms)=>{
+    this.$axios.get('http://172.20.153.144:7001/live').then((rooms)=>{
       console.log(rooms);
       this.liveroom = rooms.data;
     })
@@ -264,6 +271,22 @@ export default {
             params: { id: store.state.userdata.id }
           });
       }
+    },
+    logout: function(){
+
+      this.$axios.get('http://172.20.153.144:7001/api/user/logout').then(()=>{
+           let userdata = {
+          role: 0,
+          name: '',
+          accountnum: 100000000
+        }
+        store.commit("updata",userdata);
+        this.$Message.info('注销成功', 3);
+       this.userrole = 0;
+      }).catch(()=>{
+                  this.$Message.info('注销失败', 3);
+      })
+        
     },
     fnwork: function() {
       switch (this.userrole) {
@@ -305,7 +328,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../assets/basic.css";
-
+.canshow{
+  display: block;
+}
 #header {
   height: 100px;
   text-align: center;
@@ -349,7 +374,13 @@ export default {
   text-align: center;
   cursor: pointer;
 }
-
+.logout{
+  float: right;
+  margin: 50px 50px 0px 0px;
+  color: #00b0ff;
+  font-size: 16px;
+    cursor: pointer;
+}
 .el-input-group {
   border-radius: 20px;
 }

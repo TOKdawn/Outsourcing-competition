@@ -244,7 +244,7 @@ export default {
               this.live_basic_height = 800
               
           }else{
-              console.log("ssssss")
+            //   console.log("ssssss")
               this.rihgtshow = false;
                this.left=24;
               this.right=0;
@@ -277,9 +277,9 @@ export default {
    }  
   },
   created() {
-    // Vue.use(VueSocketio, '172.20.171.122:3000');
+    // Vue.use(VueSocketio, '170.20.153.144:3000');
      let _this = this; 
-    this.client =  socketio('ws://172.20.171.122:7001',{query:{room:this.$route.params.id,userID:$store.state.userdata.name}});
+    this.client =  socketio('ws://172.20.153.144:7001',{query:{room:this.$route.params.id,userID:$store.state.userdata.name}});
    this.client.on('connect',function(){
     console.log("sucess");
     // this.$socket.emit('join','甘霖娘')
@@ -300,7 +300,7 @@ this.client.on('startQuiz',function(num,time){
         _this.textshow = false;
     })
     this.client.on('startDiscuss' ,function(sub,time){
-          console.log('染发剂开个会股份换股')
+
         _this.changesmall(true);
         _this.commm = sub;
     })
@@ -332,7 +332,7 @@ this.client.on('startQuiz',function(num,time){
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: `http://172.20.171.122:9090/live/${this.$route.params.id}.flv`
+            url: `http://170.20.153.144:9090/live/${this.$route.params.id}.flv`
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();

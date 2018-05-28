@@ -57,7 +57,7 @@
                         </FormItem>
     
                         <FormItem>
-                            <Button type="primary" @click="student()" id="loginbutton">登录</Button>
+                            <Button type="primary" @click="handleSubmit('formInline')" id="loginbutton">登录</Button>
                         </FormItem>
                     </Form>
                 </div>
@@ -139,8 +139,7 @@
                 <Col span="8">
                 <img src="./user.jpg">
                 <p>
-                    张小三
-                    
+                    张小三   
                 </p>
                 </Col>
                 <Col span="8">
@@ -153,9 +152,7 @@
                 <img src="./user.jpg">
                 <p>
                     张小三
-               
                 </p>
-                
                 </Col>
             </Row>
         </div>
@@ -175,7 +172,6 @@
                 formInline: {
                     user: "",
                     password: "",
-                
                 },
                 ruleInline: {
                     user: [{
@@ -203,24 +199,24 @@
                 let _this = this;
     
                 this.$axios
-                    .post("/user/login", {
-                        loginNum: this.formInline.user,
-                        loginPsd: this.formInline.password
+                    .post("http://172.20.153.144:7001/api/user/login", {
+                        username: this.formInline.user,
+                        password: this.formInline.password
                     })
                     .then(function(response) {
-                        console.log(response.data.role);
+                        console.log(response.data);
                         if (response.data.role !== 30) {
                             var userData = {
-                                role: parseInt(response.data.role),
-                                name: response.data.name
+                                role: parseInt(response.data.data.user.role)+1,
+                                name: response.data.data.user.nickname.name
                             };
                             store.commit("updata", userData);
-                            console.log("rouke");
-                            _this.$router.push("/basic/home");
+                            // console.log("rouke");
+                            _this.$router.push("/");
                         }
                     })
-                    .catch(function(error) {
-                        console.log("请求失败");
+                    .catch(function(error) {       
+                    _this.$Message.info('登录失败', 3);
                     });
             },
             changeicoflag() {
