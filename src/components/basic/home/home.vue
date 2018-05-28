@@ -284,7 +284,7 @@ export default {
         this.$Message.info('注销成功', 3);
        this.userrole = 0;
       }).catch(()=>{
-                  this.$Message.info('注销失败', 3);
+          this.$Message.info('注销失败', 3);
       })
         
     },

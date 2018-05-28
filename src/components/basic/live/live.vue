@@ -14,7 +14,17 @@
 					</div>
                       </el-radio-group>
 				</div>
-                  <Button type="info" @click="dsadas">提交</Button>
+                  <!-- <Form ref="formCustom" :model="formCustom"  :label-width="80">
+        <Form-item label="密码" prop="passwd">
+            <Input type="password" v-model="formCustom.passwd"></Input>
+        </Form-item>
+      
+        <Form-item>
+            <Button type="primary" @click="handleSubmit('formCustom')">提交</Button>
+         
+        </Form-item>
+    </Form> -->
+                  <Button type="info" @click="submit">提交</Button>
 			</el-main>
 		</el-container>
 	</div>
@@ -67,8 +77,6 @@
                                 </Col>
                             </Row>
                         </div>
-
- 
                         <div class="left_main" >
                             <video id="videoElement" :style="{width: leftheight+'px'}"></video>
                         </div>   
@@ -107,19 +115,14 @@
                         <div class="live_comm">
                             <Row class="comm_buttonBar" >
                                 <Col span="7" style="color:#1e88e5;font-size:16px;" > 讨论主题:</Col>
-                                <Col span="16" style="font-size:16px; text-align:left;">{{commm}}</Col>
-                            
+                                <Col span="16" style="font-size:16px; text-align:left;">{{commm}}</Col>                          
                             </Row>
-                                <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>
-                               
+                                <Input class= "comm_input" v-model="user_comment" type="textarea" :rows="3" placeholder="在此输入....."></Input>                               
                         </div>
                         <span  class="count">剩余讨论时间{{count}} s</span>
                           <Button type="primary" class="comm_sent" @click="sendMessage()" > 发送</Button>
                     </div>
                 </div>
-
-
-
                 </Col>
             </Row>
      </div>
@@ -159,17 +162,7 @@ export default {
          
         ],
         radio: '1',
-		questions: [{
-            title: 'Hbase 如何安装',
-            modelname: 'radio1',
-			selects: [{
-			
-				answer: 'linux'
-			},{
-				
-				answer: 'windows'
-			}]
-		},
+		questions: [
 		{
             title: 'Hbase 如何卸载',
             modelname: 'radio2',
@@ -231,7 +224,13 @@ export default {
          this.user_comment = '';
          
       },
-      dsadas: function(){
+      submit: function(){
+          console.log(this.questions)
+          this.$axios.post(`live/${this.$route.params.id}/receipt`,{
+              data: this.questions
+          }).then(()=>{
+                  this.$Message.info('提交成功', 3);
+          })
           this.innerVisible = false;
       },
       changesmall: function(type){
@@ -249,8 +248,7 @@ export default {
                this.left=24;
               this.right=0;
               this.leftheight=1178;
-              this.live_basic_height = 950
-              
+              this.live_basic_height = 950              
           }
       },
       innershow: function(){
@@ -261,7 +259,6 @@ export default {
      const TIME_COUNT = 180;
      if (!this.timer) {
        this.count = TIME_COUNT;
-
        this.timer = setInterval(() => {
        if (this.count > 0 && this.count <= TIME_COUNT) {
          this.count--;
@@ -295,8 +292,11 @@ export default {
         _this.$Message.warning('有学生加入');
 
     });
-this.client.on('startQuiz',function(num,time){
-        console.log('讨论')
+this.client.on('startQuiz',(num,time,data)=>{
+        console.log('data',data)
+         this.questions.splice(0,100);
+         this.questions = this.questions.concat(data);
+        console.log('arr:',this.questions)
         _this.textshow = false;
     })
     this.client.on('startDiscuss' ,function(sub,time){
@@ -332,7 +332,7 @@ this.client.on('startQuiz',function(num,time){
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: `http://170.20.153.144:9090/live/${this.$route.params.id}.flv`
+            url: `http://172.20.153.144:9090/live/${this.$route.params.id}.flv`
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
