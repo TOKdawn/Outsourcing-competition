@@ -232,7 +232,7 @@ export default {
     if (store.state.userdata.role === 20) {
       (this.work = "批改作业"), (this.clas = "发布课件"), (this.userrole = 20);
     }
-    this.$axios.get('http://172.20.153.144:7001/live').then((rooms)=>{
+    this.$axios.get('http://118.25.45.164:7001/live').then((rooms)=>{
       console.log(rooms);
       this.liveroom = rooms.data;
     })
@@ -274,7 +274,7 @@ export default {
     },
     logout: function(){
 
-      this.$axios.get('http://172.20.153.144:7001/api/user/logout').then(()=>{
+      this.$axios.get('http://118.25.45.164:7001/api/user/logout').then(()=>{
            let userdata = {
           role: 0,
           name: '',

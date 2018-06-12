@@ -14,16 +14,6 @@
 					</div>
                       </el-radio-group>
 				</div>
-                  <!-- <Form ref="formCustom" :model="formCustom"  :label-width="80">
-        <Form-item label="密码" prop="passwd">
-            <Input type="password" v-model="formCustom.passwd"></Input>
-        </Form-item>
-      
-        <Form-item>
-            <Button type="primary" @click="handleSubmit('formCustom')">提交</Button>
-         
-        </Form-item>
-    </Form> -->
                   <Button type="info" @click="submit">提交</Button>
 			</el-main>
 		</el-container>
@@ -332,7 +322,7 @@ this.client.on('startQuiz',(num,time,data)=>{
         var videoElement = document.getElementById('videoElement');
         var flvPlayer = flvjs.createPlayer({
             type: 'flv',
-            url: `http://172.20.153.144:9090/live/${this.$route.params.id}.flv`
+            url: `http://118.25.45.164:9090/live/${this.$route.params.id}.flv`
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
